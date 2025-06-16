@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azulor - Soluções em Pisos e Revestimentos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f7f7f7;
+      color: #222;
+    }
+
+    header {
+      background-color: #002244;
+      color: white;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    nav {
+      background-color: #003366;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    nav button {
+      background: #005599;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    nav button:hover {
+      background: #0077cc;
+    }
+
+    .catalogo {
+      max-width: 1300px;
+      margin: 3rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      padding: 0 2rem;
+    }
+
+    .artigo {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      border: 6px solid #002244;
+    }
+
+    .artigo:hover {
+      transform: translateY(-6px);
+    }
+
+    .artigo img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .artigo .info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .artigo h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .btn-orcamento {
+      margin-top: 1rem;
+      background: #003366;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-orcamento:hover {
+      background: #005599;
+    }
+
+    footer {
+      background: #001122;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    footer h3 {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 700px) {
+      header, nav {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+  <script>
+    function filtrar(categoria) {
+      let artigos = document.querySelectorAll('.artigo');
+      artigos.forEach(artigo => {
+        if (categoria === 'todos' || artigo.dataset.categoria === categoria) {
+          artigo.style.display = 'block';
+        } else {
+          artigo.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <img src="logo_azulor.png" alt="Logo Azulor">
+      <h1>AZULOR</h1>
+    </div>
+    <p style="font-weight: 600; font-size: 1.1rem;">Pisos e Revestimentos</p>
+  </header>
+
+  <nav>
+    <button onclick="filtrar('todos')">Todos</button>
+    <button onclick="filtrar('interior')">Interior</button>
+    <button onclick="filtrar('exterior')">Exterior</button>
+    <button onclick="filtrar('cozinha')">Cozinha</button>
+    <a href="#contacto" style="text-decoration:none;"><button>Contacto</button></a>
+  </nav>
+
+  <main class="catalogo">
+    <div class="artigo" data-categoria="exterior">
+      <img src="tijoleira_3d.png" alt="Tijoleira">
+      <div class="info">
+        <h2>Tijoleira</h2>
+        <button class="btn-orcamento">Pedir orçamento</button>
+      </div>
+    </div>
+
+    <div class="artigo" data-categoria="cozinha">
+      <img src="azulejo_branco_3d.png" alt="Azulejo Branco">
+      <div class="info">
+        <h2>Azulejo Branco</h2>
+        <button class="btn-orcamento">Pedir orçamento</button>
+      </div>
+    </div>
+
+    <div class="artigo" data-categoria="interior">
+      <img src="piso_cinza_3d.png" alt="Piso Cinza">
+      <div class="info">
+        <h2>Piso Cinza</h2>
+        <button class="btn-orcamento">Pedir orçamento</button>
+      </div>
+    </div>
+  </main>
+
+  <footer id="contacto">
+    <h3>Contacte-nos para um orçamento</h3>
+    <p>Email: <a href="mailto:comercial@azulor.pt" style="color: #ccc; text-decoration: underline;">comercial@azulor.pt</a></p>
+    <p>Telefone: +351 912 345 678</p>
+    <p>Morada: Rua do Revestimento, 123, Porto</p>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">© 2025 Azulor. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
