@@ -10,6 +10,7 @@
       height: 100%;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
     body {
       min-height: 100vh;
@@ -19,9 +20,8 @@
       background: #f7f7f7;
       color: #222;
     }
-    /* HEADER STYLES SIMILAR TO IMAGE 1 */
     .main-header {
-      background: #04243d; /* dark blue */
+      background: #04243d;
       color: #fff;
       padding: 0 2rem;
       display: flex;
@@ -82,6 +82,7 @@
       transition: color 0.2s;
       padding-bottom: 2px;
       border-bottom: 2px solid transparent;
+      cursor: pointer;
     }
     .main-nav a.active,
     .main-nav a:hover {
@@ -89,20 +90,43 @@
       border-bottom: 2px solid #fff;
       font-weight: 700;
     }
-
-    /* CATEGORY SELECTOR BAR */
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 0 0 0;
+      background: #f7f7f7;
+      min-height: 400px;
+    }
+    /* Home Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      justify-items: center;
+    }
+    .gallery img {
+      border-radius: 10px;
+      width: 100%;
+      max-width: 300px;
+      height: 200px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+    }
+    /* Categoria Selector */
     .categoria-bar {
       background: #fff;
-      padding: 3rem 0 0 0;
+      padding: 2rem 0 0 0;
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: flex-start;
-      min-height: 100px;
+      min-height: 60px;
     }
     .categoria-select-wrapper {
       margin-left: 5vw;
-      margin-top: 1rem;
     }
     .categoria-select {
       background: #04243d;
@@ -116,46 +140,159 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
       outline: none;
       appearance: none;
-      position: relative;
       min-width: 200px;
       cursor: pointer;
     }
-    .categoria-select:after {
-      content: '';
+    /* Catalog grid */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .artigo-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+      overflow: hidden;
+      border: 4px solid #002244;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .artigo-card:hover {
+      transform: translateY(-5px) scale(1.03);
+    }
+    .artigo-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .artigo-card .info {
+      padding: 1rem;
+      text-align: center;
+      width: 100%;
+    }
+    .artigo-card .artigo-nome {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .artigo-card .artigo-preco {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #003366;
+      margin-bottom: 0.3rem;
+    }
+    /* Artigo Details Modal */
+    .modal-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 95vw;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.30);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .modal img {
+      border-radius: 10px;
+      width: 100%;
+      max-width: 320px;
+      height: 190px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .modal .close-btn {
       position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 12px;
-      height: 12px;
-      background: url("data:image/svg+xml,%3Csvg fill='white' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='white' stroke-width='2' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E") no-repeat center;
-      pointer-events: none;
+      right: 1.1rem;
+      top: 0.8rem;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: #444;
+      cursor: pointer;
     }
-    /* Hide default arrow on select */
-    .categoria-select::-ms-expand {
-      display: none;
+    .btn-main {
+      background: #003366;
+      color: white;
+      padding: 0.7rem 1.6rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 1.1rem;
+      font-size: 1rem;
+      transition: background 0.2s;
     }
-    /* Responsive */
-    @media (max-width: 700px) {
-      .main-header {
-        flex-direction: column;
-        height: auto;
-        padding: 1rem;
-        gap: 1.2rem;
-      }
-      .categoria-bar {
-        padding: 1.5rem 0 0 0;
-      }
-      .categoria-select-wrapper {
-        margin-left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-      }
+    .btn-main:hover {
+      background: #005599;
     }
-    /* Footer remains at the bottom */
-    main {
-      flex: 1;
+    /* Orçamento form */
+    .orcamento-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+      width: 100%;
+      align-items: center;
+    }
+    .orcamento-form textarea {
+      width: 92%;
+      min-height: 60px;
+      resize: vertical;
+      padding: 0.7rem;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    .orcamento-form button {
+      background: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    /* Contacts */
+    .contacts-container {
+      background: white;
+      border-radius: 12px;
+      margin: 2rem auto;
+      max-width: 500px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      padding: 2.2rem 2rem;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .contacts-container h3 {
+      margin-top: 0;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    .contacts-container a {
+      color: #003366;
+      text-decoration: underline;
+    }
+    .contacts-container p {
+      margin-bottom: 0.7rem;
     }
     footer {
       background: #001122;
@@ -167,6 +304,21 @@
     footer h3 {
       font-weight: 600;
     }
+    @media (max-width: 700px) {
+      .main-header {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+        gap: 1.2rem;
+      }
+      main {
+        padding: 0.5rem;
+      }
+      .gallery, .catalog-grid {
+        padding: 1rem 0.2rem;
+        gap: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -174,7 +326,6 @@
   <header class="main-header">
     <div class="branding">
       <div class="branding-logo">
-        <!-- Replace the src with your real logo file or SVG as needed -->
         <img src="logo_azulor.png" alt="AZULOR logo">
       </div>
       <div class="branding-title">
@@ -183,16 +334,16 @@
       </div>
     </div>
     <nav class="main-nav">
-      <a href="#" class="active">HOME</a>
-      <a href="#catalogo">CATÁLOGO</a>
-      <a href="#contacto">CONTACTO</a>
+      <a href="#" id="nav-home" class="active">HOME</a>
+      <a href="#" id="nav-catalogo">CATÁLOGO</a>
+      <a href="#" id="nav-contactos">CONTACTO</a>
     </nav>
   </header>
 
-  <!-- CATEGORIA SELECTOR BAR -->
-  <div class="categoria-bar">
+  <!-- CATEGORIA BAR (Only for Catalogo) -->
+  <div class="categoria-bar" id="categoria-bar" style="display:none;">
     <div class="categoria-select-wrapper">
-      <select class="categoria-select" id="categoriaSelect" onchange="filtrar(this.value)">
+      <select class="categoria-select" id="categoriaSelect">
         <option value="todos">Categoria</option>
         <option value="interior">Interior</option>
         <option value="exterior">Exterior</option>
@@ -202,9 +353,7 @@
   </div>
 
   <!-- MAIN CONTENT -->
-  <main id="catalogo">
-    <!-- Seu catálogo de produtos aqui -->
-  </main>
+  <main id="main-content"></main>
 
   <!-- FOOTER -->
   <footer id="contacto">
@@ -214,10 +363,166 @@
     <p>Morada: Rua do Revestimento, 123, Porto</p>
     <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">© 2025 Azulor. Todos os direitos reservados.</p>
   </footer>
-  <script>
-    function filtrar(categoria) {
-      // Implementação de filtro se necessário
+
+  <!-- MODALS (Details, Orçamento) -->
+  <div id="modal-container" style="display:none;"></div>
+
+<script>
+const artigos = [
+  {
+    categoria: "exterior",
+    nome: "Tijoleira",
+    preco: "€19,90/m²",
+    imagem: "tijoleira_3d.png",
+    descricao: "Tijoleira de alta resistência, ideal para áreas externas e jardins.",
+  },
+  {
+    categoria: "cozinha",
+    nome: "Azulejo Branco",
+    preco: "€14,50/m²",
+    imagem: "azulejo_branco_3d.png",
+    descricao: "Azulejo branco clássico, perfeito para cozinhas modernas e elegantes.",
+  },
+  {
+    categoria: "interior",
+    nome: "Piso Cinza",
+    preco: "€22,00/m²",
+    imagem: "piso_cinza_3d.png",
+    descricao: "Piso cinza sofisticado para ambientes internos, fácil de limpar.",
+  }
+];
+
+// Navigation state
+function setActiveNav(id) {
+  document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function hideCategoriaBar() {
+  document.getElementById('categoria-bar').style.display = 'none';
+}
+function showCategoriaBar() {
+  document.getElementById('categoria-bar').style.display = '';
+}
+
+// Render Home Gallery
+function renderHome() {
+  hideCategoriaBar();
+  const main = document.getElementById('main-content');
+  main.innerHTML = `
+    <div class="gallery">
+      ${artigos.map(a => `<img src="${a.imagem}" alt="${a.nome}">`).join('')}
+    </div>
+  `;
+}
+
+// Render Catalogo grid
+function renderCatalogo(selectedCategoria = "todos") {
+  showCategoriaBar();
+  const main = document.getElementById('main-content');
+  let filtered = selectedCategoria === "todos" ? artigos : artigos.filter(a => a.categoria === selectedCategoria);
+  if(filtered.length === 0) {
+    main.innerHTML = `<p style="text-align:center;margin:2rem 0;">Nenhum produto encontrado para essa categoria.</p>`;
+    return;
+  }
+  main.innerHTML = `
+    <div class="catalog-grid">
+      ${filtered.map((a,i) => `
+      <div class="artigo-card" data-idx="${i}" tabindex="0">
+        <img src="${a.imagem}" alt="${a.nome}">
+        <div class="info">
+          <div class="artigo-nome">${a.nome}</div>
+          <div class="artigo-preco">${a.preco}</div>
+        </div>
+      </div>
+      `).join('')}
+    </div>
+  `;
+  // Click event for cards
+  document.querySelectorAll('.artigo-card').forEach(card => {
+    card.onclick = function() {
+      const idx = this.getAttribute('data-idx');
+      showArtigoModal(artigos[idx]);
     }
-  </script>
+  });
+}
+
+// Show artigo modal
+function showArtigoModal(artigo) {
+  const modalContainer = document.getElementById('modal-container');
+  modalContainer.innerHTML = `
+    <div class="modal-bg" tabindex="-1">
+      <div class="modal" role="dialog" aria-modal="true">
+        <button class="close-btn" title="Fechar" onclick="closeModal()">&times;</button>
+        <img src="${artigo.imagem}" alt="${artigo.nome}">
+        <div class="artigo-nome" style="font-size:1.3rem;margin-bottom:0.2rem;">${artigo.nome}</div>
+        <div class="artigo-preco" style="font-size:1.1rem;">${artigo.preco}</div>
+        <div style="margin:1rem 0 0.7rem 0; color:#333;">${artigo.descricao}</div>
+        <button class="btn-main" onclick="showOrcamentoForm('${artigo.nome}')">Faça o seu Orçamento</button>
+      </div>
+    </div>
+  `;
+  modalContainer.style.display = '';
+  // Close modal when click outside
+  modalContainer.querySelector('.modal-bg').onclick = function(e) {
+    if(e.target === this) closeModal();
+  }
+}
+function closeModal() {
+  document.getElementById('modal-container').style.display = 'none';
+}
+
+// Show orçamento form
+function showOrcamentoForm(produtoNome) {
+  const modal = document.querySelector('#modal-container .modal');
+  modal.innerHTML = `
+    <button class="close-btn" title="Fechar" onclick="closeModal()">&times;</button>
+    <div style="font-size:1.1rem; font-weight:700; margin-bottom:0.7rem;">Faça o seu Orçamento</div>
+    <div style="font-size:1rem; margin-bottom:0.7rem;">Produto: <span style="font-weight:600">${produtoNome}</span></div>
+    <form class="orcamento-form" onsubmit="enviarOrcamento(event)">
+      <textarea name="mensagem" required placeholder="Escreva suas perguntas ou pedidos..."></textarea>
+      <button type="submit">Enviar pedido</button>
+    </form>
+  `;
+}
+function enviarOrcamento(e) {
+  e.preventDefault();
+  const form = e.target;
+  form.innerHTML = `<div style="text-align:center; color:green; font-weight:600; font-size:1.05rem;">Pedido enviado com sucesso! Entraremos em contato em breve.</div>`;
+  setTimeout(closeModal, 2000);
+}
+
+// Render Contactos
+function renderContactos() {
+  hideCategoriaBar();
+  const main = document.getElementById('main-content');
+  main.innerHTML = `
+    <div class="contacts-container">
+      <h3>Contacte-nos para um orçamento</h3>
+      <p>Email: <a href="mailto:comercial@azulor.pt">comercial@azulor.pt</a></p>
+      <p>Telefone: +351 912 345 678</p>
+      <p>Morada: Rua do Revestimento, 123, Porto</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">© 2025 Azulor. Todos os direitos reservados.</p>
+    </div>
+  `;
+}
+
+// Navigation events
+document.getElementById('nav-home').onclick = (e)=>{ e.preventDefault(); setActiveNav('nav-home'); renderHome(); };
+document.getElementById('nav-catalogo').onclick = (e)=>{
+  e.preventDefault();
+  setActiveNav('nav-catalogo');
+  renderCatalogo(document.getElementById('categoriaSelect').value);
+};
+document.getElementById('nav-contactos').onclick = (e)=>{ e.preventDefault(); setActiveNav('nav-contactos'); renderContactos(); };
+
+// Categoria selector event
+document.getElementById('categoriaSelect').onchange = function() {
+  renderCatalogo(this.value);
+};
+
+// Init page
+renderHome();
+
+</script>
 </body>
 </html>
