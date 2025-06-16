@@ -298,11 +298,24 @@
       background: #001122;
       color: white;
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 0.5rem 1rem 0.5rem;
       margin-top: 4rem;
     }
-    footer h3 {
-      font-weight: 600;
+    footer .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    footer img {
+      display: block;
+      height: 48px;
+      margin-bottom: 0.5rem;
+    }
+    footer p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #ccc;
     }
     @media (max-width: 700px) {
       .main-header {
@@ -356,12 +369,11 @@
   <main id="main-content"></main>
 
   <!-- FOOTER -->
-  <footer id="contacto">
-    <h3>Contacte-nos para um orçamento</h3>
-    <p>Email: <a href="mailto:comercial@azulor.pt" style="color: #ccc; text-decoration: underline;">comercial@azulor.pt</a></p>
-    <p>Telefone: +351 912 345 678</p>
-    <p>Morada: Rua do Revestimento, 123, Porto</p>
-    <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">© 2025 Azulor. Todos os direitos reservados.</p>
+  <footer>
+    <div class="footer-inner">
+      <img src="logo_azulor.png" alt="Logo Azulor">
+      <p>© 2025 Azulor. Todos os direitos reservados.</p>
+    </div>
   </footer>
 
   <!-- MODALS (Details, Orçamento) -->
