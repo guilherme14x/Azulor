@@ -102,7 +102,6 @@
       display: flex;
       flex-direction: column;
     }
-    /* Home Gallery */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -118,7 +117,6 @@
       object-fit: cover;
       box-shadow: 0 4px 12px rgba(0,0,0,0.13);
     }
-    /* Categoria Selector */
     .categoria-bar {
       background: #fff;
       padding: 2rem 0 0 0;
@@ -146,7 +144,6 @@
       min-width: 200px;
       cursor: pointer;
     }
-    /* Catalog grid */
     .catalog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -189,7 +186,6 @@
       color: #003366;
       margin-bottom: 0.3rem;
     }
-    /* Artigo Details Modal */
     .modal-bg {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -245,7 +241,6 @@
     .btn-main:hover {
       background: #005599;
     }
-    /* Orçamento form */
     .orcamento-form {
       display: flex;
       flex-direction: column;
@@ -274,7 +269,6 @@
       font-weight: 600;
       cursor: pointer;
     }
-    /* Contacts */
     .contacts-container {
       background: white;
       border-radius: 12px;
@@ -338,7 +332,6 @@
   </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header class="main-header">
     <div class="branding">
       <div class="branding-logo">
@@ -355,8 +348,6 @@
       <a href="#" id="nav-contactos">CONTACTO</a>
     </nav>
   </header>
-
-  <!-- CATEGORIA BAR (Only for Catalogo) -->
   <div class="categoria-bar" id="categoria-bar" style="display:none;">
     <div class="categoria-select-wrapper">
       <select class="categoria-select" id="categoriaSelect">
@@ -367,21 +358,14 @@
       </select>
     </div>
   </div>
-
-  <!-- MAIN CONTENT -->
   <main id="main-content"></main>
-
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <img src="logo_azulor.png" alt="Logo Azulor">
       <p>© 2025 Azulor. Todos os direitos reservados.</p>
     </div>
   </footer>
-
-  <!-- MODALS (Details, Orçamento) -->
   <div id="modal-container" style="display:none;"></div>
-
 <script>
 const artigos = [
   {
@@ -444,12 +428,10 @@ const artigos = [
     categoria: "interior",
     nome: "Painel Vinil",
     preco: "€24,90/m²",
-    imagem: "painel_vinil_3d.png", // Adicionada sua imagem (imagem 2)
+    imagem: "painel_vinil_3d.png",
     descricao: "Painel de vinil com textura de madeira, resistente à humidade e fácil de instalar.",
   }
 ];
-
-// Navigation state
 function setActiveNav(id) {
   document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -460,8 +442,6 @@ function hideCategoriaBar() {
 function showCategoriaBar() {
   document.getElementById('categoria-bar').style.display = '';
 }
-
-// Render Home Gallery
 function renderHome() {
   hideCategoriaBar();
   const main = document.getElementById('main-content');
@@ -471,8 +451,6 @@ function renderHome() {
     </div>
   `;
 }
-
-// Render Catalogo grid
 function renderCatalogo(selectedCategoria = "todos") {
   showCategoriaBar();
   const main = document.getElementById('main-content');
@@ -494,7 +472,6 @@ function renderCatalogo(selectedCategoria = "todos") {
       `).join('')}
     </div>
   `;
-  // Click event for cards
   document.querySelectorAll('.artigo-card').forEach(card => {
     card.onclick = function() {
       const idx = this.getAttribute('data-idx');
@@ -502,8 +479,6 @@ function renderCatalogo(selectedCategoria = "todos") {
     }
   });
 }
-
-// Show artigo modal
 function showArtigoModal(artigo) {
   const modalContainer = document.getElementById('modal-container');
   modalContainer.innerHTML = `
@@ -519,7 +494,6 @@ function showArtigoModal(artigo) {
     </div>
   `;
   modalContainer.style.display = '';
-  // Close modal when click outside
   modalContainer.querySelector('.modal-bg').onclick = function(e) {
     if(e.target === this) closeModal();
   }
@@ -527,8 +501,6 @@ function showArtigoModal(artigo) {
 function closeModal() {
   document.getElementById('modal-container').style.display = 'none';
 }
-
-// Show orçamento form
 function showOrcamentoForm(produtoNome) {
   const modal = document.querySelector('#modal-container .modal');
   modal.innerHTML = `
@@ -547,8 +519,6 @@ function enviarOrcamento(e) {
   form.innerHTML = `<div style="text-align:center; color:green; font-weight:600; font-size:1.05rem;">Pedido enviado com sucesso! Entraremos em contato em breve.</div>`;
   setTimeout(closeModal, 2000);
 }
-
-// Render Contactos
 function renderContactos() {
   hideCategoriaBar();
   const main = document.getElementById('main-content');
@@ -562,8 +532,6 @@ function renderContactos() {
     </div>
   `;
 }
-
-// Navigation events
 document.getElementById('nav-home').onclick = (e)=>{ e.preventDefault(); setActiveNav('nav-home'); renderHome(); };
 document.getElementById('nav-catalogo').onclick = (e)=>{
   e.preventDefault();
@@ -571,15 +539,10 @@ document.getElementById('nav-catalogo').onclick = (e)=>{
   renderCatalogo(document.getElementById('categoriaSelect').value);
 };
 document.getElementById('nav-contactos').onclick = (e)=>{ e.preventDefault(); setActiveNav('nav-contactos'); renderContactos(); };
-
-// Categoria selector event
 document.getElementById('categoriaSelect').onchange = function() {
   renderCatalogo(this.value);
 };
-
-// Init page
 renderHome();
-
 </script>
 </body>
 </html>
