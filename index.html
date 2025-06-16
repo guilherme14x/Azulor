@@ -98,6 +98,8 @@
       padding: 2rem 0 0 0;
       background: #f7f7f7;
       min-height: 400px;
+      display: flex;
+      flex-direction: column;
     }
     /* Home Gallery */
     .gallery {
@@ -114,6 +116,7 @@
       height: 200px;
       object-fit: cover;
       box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+      background: #e3e3e3;
     }
     /* Categoria Selector */
     .categoria-bar {
@@ -169,6 +172,7 @@
       width: 100%;
       height: 160px;
       object-fit: cover;
+      background: #e3e3e3;
     }
     .artigo-card .info {
       padding: 1rem;
@@ -216,6 +220,7 @@
       height: 190px;
       object-fit: cover;
       margin-bottom: 1rem;
+      background: #e3e3e3;
     }
     .modal .close-btn {
       position: absolute;
@@ -299,7 +304,7 @@
       color: white;
       text-align: center;
       padding: 2rem 0.5rem 1rem 0.5rem;
-      margin-top: 4rem;
+      margin-top: 0;
     }
     footer .footer-inner {
       display: flex;
@@ -366,7 +371,7 @@
   </div>
 
   <!-- MAIN CONTENT -->
-  <main id="main-content"></main>
+  <main id="main-content" style="flex:1;"></main>
 
   <!-- FOOTER -->
   <footer>
@@ -385,64 +390,63 @@ const artigos = [
     categoria: "exterior",
     nome: "Tijoleira",
     preco: "€19,90/m²",
-    imagem: "tijoleira_3d.png",
+    imagem: "tijoleira_3d.png", // Sugestão: terracotta tile, neutro
     descricao: "Tijoleira de alta resistência, ideal para áreas externas e jardins.",
   },
   {
     categoria: "cozinha",
     nome: "Azulejo Branco",
     preco: "€14,50/m²",
-    imagem: "azulejo_branco_3d.png",
+    imagem: "azulejo_branco_3d.png", // Sugestão: azulejo branco brilhante
     descricao: "Azulejo branco clássico, perfeito para cozinhas modernas e elegantes.",
   },
   {
     categoria: "interior",
     nome: "Piso Cinza",
     preco: "€22,00/m²",
-    imagem: "piso_cinza_3d.png",
+    imagem: "piso_cinza_3d.png", // Sugestão: piso cinza fosco
     descricao: "Piso cinza sofisticado para ambientes internos, fácil de limpar.",
   },
   {
     categoria: "interior",
     nome: "Piso Madeira",
     preco: "€27,50/m²",
-    imagem: "piso_madeira_3d.png",
+    imagem: "piso_madeira_3d.png", // Sugestão: textura madeira natural
     descricao: "Piso com acabamento de madeira natural, aconchegante e elegante para ambientes internos.",
   },
   {
     categoria: "exterior",
     nome: "Deck Composto",
     preco: "€31,00/m²",
-    imagem: "deck_composto_3d.png",
+    imagem: "deck_composto_3d.png", // Sugestão: deck composto, madeira sintética
     descricao: "Deck composto resistente às intempéries, perfeito para jardins e varandas.",
   },
   {
     categoria: "cozinha",
     nome: "Azulejo Decorado",
     preco: "€18,90/m²",
-    imagem: "azulejo_decorado_3d.png",
+    imagem: "azulejo_decorado_3d.png", // Sugestão: azulejo com padrão português
     descricao: "Azulejo decorado com padrões modernos para dar destaque à sua cozinha.",
   },
   {
     categoria: "exterior",
     nome: "Pedra Natural",
     preco: "€45,00/m²",
-    imagem: "pedra_natural_3d.png",
+    imagem: "pedra_natural_3d.png", // Sugestão: pedra rústica sobre fundo bege
     descricao: "Revestimento em pedra natural para um visual rústico e sofisticado em áreas externas.",
   },
   {
     categoria: "interior",
     nome: "Laminado Premium",
     preco: "€29,90/m²",
-    imagem: "laminado_premium_3d.png",
+    imagem: "laminado_premium_3d.png", // Sugestão: laminado amadeirado premium
     descricao: "Laminado de alta durabilidade, indicado para salas e quartos.",
   },
-  // NOVO ARTIGO ADICIONADO
   {
     categoria: "interior",
     nome: "Painel Vinil",
     preco: "€24,90/m²",
-    imagem: "painel_vinil_3d.png",
+    imagem: "painel_vinil_3d.png", // sua imagem enviada acima!
     descricao: "Painel de vinil com textura de madeira, resistente à humidade e fácil de instalar.",
   }
 ];
