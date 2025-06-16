@@ -8,14 +8,15 @@
   <style>
     html, body {
       height: 100%;
+      min-height: 100vh;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
     body {
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
       font-family: 'Inter', sans-serif;
       background: #f7f7f7;
       color: #222;
@@ -91,7 +92,7 @@
       font-weight: 700;
     }
     main {
-      flex: 1;
+      flex: 1 0 auto;
       width: 100%;
       max-width: 1300px;
       margin: 0 auto;
@@ -116,7 +117,6 @@
       height: 200px;
       object-fit: cover;
       box-shadow: 0 4px 12px rgba(0,0,0,0.13);
-      background: #e3e3e3;
     }
     /* Categoria Selector */
     .categoria-bar {
@@ -172,7 +172,6 @@
       width: 100%;
       height: 160px;
       object-fit: cover;
-      background: #e3e3e3;
     }
     .artigo-card .info {
       padding: 1rem;
@@ -220,7 +219,6 @@
       height: 190px;
       object-fit: cover;
       margin-bottom: 1rem;
-      background: #e3e3e3;
     }
     .modal .close-btn {
       position: absolute;
@@ -300,11 +298,11 @@
       margin-bottom: 0.7rem;
     }
     footer {
+      flex-shrink: 0;
       background: #001122;
       color: white;
       text-align: center;
       padding: 2rem 0.5rem 1rem 0.5rem;
-      margin-top: 0;
     }
     footer .footer-inner {
       display: flex;
@@ -371,7 +369,7 @@
   </div>
 
   <!-- MAIN CONTENT -->
-  <main id="main-content" style="flex:1;"></main>
+  <main id="main-content"></main>
 
   <!-- FOOTER -->
   <footer>
@@ -390,63 +388,63 @@ const artigos = [
     categoria: "exterior",
     nome: "Tijoleira",
     preco: "€19,90/m²",
-    imagem: "tijoleira_3d.png", // Sugestão: terracotta tile, neutro
+    imagem: "tijoleira_3d.png",
     descricao: "Tijoleira de alta resistência, ideal para áreas externas e jardins.",
   },
   {
     categoria: "cozinha",
     nome: "Azulejo Branco",
     preco: "€14,50/m²",
-    imagem: "azulejo_branco_3d.png", // Sugestão: azulejo branco brilhante
+    imagem: "azulejo_branco_3d.png",
     descricao: "Azulejo branco clássico, perfeito para cozinhas modernas e elegantes.",
   },
   {
     categoria: "interior",
     nome: "Piso Cinza",
     preco: "€22,00/m²",
-    imagem: "piso_cinza_3d.png", // Sugestão: piso cinza fosco
+    imagem: "piso_cinza_3d.png",
     descricao: "Piso cinza sofisticado para ambientes internos, fácil de limpar.",
   },
   {
     categoria: "interior",
     nome: "Piso Madeira",
     preco: "€27,50/m²",
-    imagem: "piso_madeira_3d.png", // Sugestão: textura madeira natural
+    imagem: "piso_madeira_3d.png",
     descricao: "Piso com acabamento de madeira natural, aconchegante e elegante para ambientes internos.",
   },
   {
     categoria: "exterior",
     nome: "Deck Composto",
     preco: "€31,00/m²",
-    imagem: "deck_composto_3d.png", // Sugestão: deck composto, madeira sintética
+    imagem: "deck_composto_3d.png",
     descricao: "Deck composto resistente às intempéries, perfeito para jardins e varandas.",
   },
   {
     categoria: "cozinha",
     nome: "Azulejo Decorado",
     preco: "€18,90/m²",
-    imagem: "azulejo_decorado_3d.png", // Sugestão: azulejo com padrão português
+    imagem: "azulejo_decorado_3d.png",
     descricao: "Azulejo decorado com padrões modernos para dar destaque à sua cozinha.",
   },
   {
     categoria: "exterior",
     nome: "Pedra Natural",
     preco: "€45,00/m²",
-    imagem: "pedra_natural_3d.png", // Sugestão: pedra rústica sobre fundo bege
+    imagem: "pedra_natural_3d.png",
     descricao: "Revestimento em pedra natural para um visual rústico e sofisticado em áreas externas.",
   },
   {
     categoria: "interior",
     nome: "Laminado Premium",
     preco: "€29,90/m²",
-    imagem: "laminado_premium_3d.png", // Sugestão: laminado amadeirado premium
+    imagem: "laminado_premium_3d.png",
     descricao: "Laminado de alta durabilidade, indicado para salas e quartos.",
   },
   {
     categoria: "interior",
     nome: "Painel Vinil",
     preco: "€24,90/m²",
-    imagem: "painel_vinil_3d.png", // sua imagem enviada acima!
+    imagem: "painel_vinil_3d.png", // Adicionada sua imagem (imagem 2)
     descricao: "Painel de vinil com textura de madeira, resistente à humidade e fácil de instalar.",
   }
 ];
