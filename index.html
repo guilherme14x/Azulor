@@ -6,8 +6,16 @@
   <title>Azulor - Soluções em Pisos e Revestimentos</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       font-family: 'Inter', sans-serif;
       background: #f7f7f7;
       color: #222;
@@ -70,7 +78,8 @@
       background: #0077cc;
     }
 
-    .catalogo {
+    main.catalogo {
+      flex: 1;
       max-width: 1300px;
       margin: 3rem auto;
       display: grid;
