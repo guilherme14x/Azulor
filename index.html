@@ -123,24 +123,23 @@
     }
     .header-flags {
       display: flex;
+      gap: 0.6rem;
       align-items: center;
-      gap: 0.5rem;
-      margin-left: 2rem;
+      margin-left: 1.5rem;
     }
-    .header-flag {
-      width: 28px;
+    .header-flags img {
+      width: 27px;
       height: 20px;
       border-radius: 3px;
-      object-fit: cover;
       border: 1px solid #eee;
-      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
       background: #fff;
-      transition: box-shadow 0.2s;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      cursor: pointer;
+      transition: transform 0.1s;
     }
-    .header-flag:hover {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.13);
-      border: 1px solid #c8d8e4;
+    .header-flags img:hover {
+      transform: scale(1.1);
+      border-color: #c8d8e4;
     }
     .categoria-bar {
       background: #fff;
@@ -448,8 +447,11 @@
         font-size: 1.3rem;
       }
       .header-flags {
-        margin-left: 0;
-        margin-top: 1rem;
+        margin-left: 0.5rem;
+      }
+      .header-flags img {
+        width: 22px;
+        height: 16px;
       }
     }
   </style>
@@ -473,11 +475,11 @@
         <a href="#" id="nav-contactos">Contactos</a>
       </nav>
       <div class="header-flags">
-        <img class="header-flag" src="flag_pt.png" alt="Português" title="Português">
-        <img class="header-flag" src="flag_gb.png" alt="English" title="English">
-        <img class="header-flag" src="flag_fr.png" alt="Français" title="Français">
-        <img class="header-flag" src="flag_de.png" alt="Deutsch" title="Deutsch">
-        <img class="header-flag" src="flag_es.png" alt="Español" title="Español">
+        <img src="flag_pt.png" alt="Português" title="Português">
+        <img src="flag_gb.png" alt="English" title="English">
+        <img src="flag_fr.png" alt="Français" title="Français">
+        <img src="flag_de.png" alt="Deutsch" title="Deutsch">
+        <img src="flag_es.png" alt="Español" title="Español">
       </div>
     </div>
   </header>
