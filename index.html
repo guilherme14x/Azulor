@@ -121,28 +121,6 @@
       border-bottom: 2px solid #fff;
       font-weight: 700;
     }
-    .lang-switcher {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      margin-left: 1.5rem;
-    }
-    .lang-flag {
-      width: 28px;
-      height: 20px;
-      border-radius: 3px;
-      border: 1px solid #999;
-      cursor: pointer;
-      object-fit: cover;
-      opacity: 0.75;
-      transition: opacity 0.15s, box-shadow 0.2s;
-      background: #fff;
-    }
-    .lang-flag.active, .lang-flag:hover {
-      opacity: 1;
-      box-shadow: 0 2px 8px #0001;
-      border: 2px solid #133d61;
-    }
     .categoria-bar {
       background: #fff;
       padding: 2.5rem 0 0 0;
@@ -260,7 +238,6 @@
       background: #fff;
       width: 100%;
       box-sizing: border-box;
-      position: relative;
     }
     .artigo-card:hover {
       transform: translateY(-5px) scale(1.03);
@@ -296,37 +273,6 @@
     .artigo-card .artigo-desc {
       color:#555;
     }
-    .artigo-card .extra-area,
-    .artigo-card .extra-tech {
-      width: 100%;
-      margin-top: 1rem;
-      margin-bottom: .5rem;
-      text-align: left;
-    }
-    .artigo-card .extra-area label {
-      margin-right: 0.3rem;
-      font-size: 0.98rem;
-    }
-    .artigo-card .area-result {
-      font-size: 1.07rem;
-      margin-top: 0.25rem;
-      color: #133d61;
-    }
-    .artigo-card .extra-tech {
-      margin-top: 0.7rem;
-      margin-bottom: .7rem;
-      background: #f3f6fa;
-      padding: 0.7rem 0.8rem;
-      border-radius: 8px;
-      font-size: 0.98rem;
-      color: #0c223a;
-    }
-    .artigo-card .extra-tech-title {
-      font-weight: 700;
-      display: block;
-      margin-bottom: 0.2rem;
-      color: #003366;
-    }
     .modal-bg {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -339,7 +285,7 @@
     .modal {
       background: #fff;
       border-radius: 12px;
-      max-width: 460px;
+      max-width: 400px;
       width: 95vw;
       padding: 2rem 1.5rem 1.5rem 1.5rem;
       position: relative;
@@ -383,28 +329,6 @@
     .modal .artigo-desc {
       margin:1rem 0 0.7rem 0;
       color:#333;
-    }
-    .modal .extra-tech,
-    .modal .extra-area {
-      width: 100%;
-      margin-top: 1rem;
-      margin-bottom: .5rem;
-      text-align: left;
-    }
-    .modal .extra-area label {
-      margin-right: 0.3rem;
-      font-size: 0.98rem;
-    }
-    .modal .area-result {
-      font-size: 1.07rem;
-      margin-top: 0.25rem;
-      color: #133d61;
-    }
-    .modal .extra-tech-title {
-      font-weight: 700;
-      display: block;
-      margin-bottom: 0.2rem;
-      color: #003366;
     }
     .contactos-form-wrap {
       width:100%;
@@ -523,12 +447,6 @@
         <a href="#" id="nav-catalogo">Catálogo</a>
         <a href="#" id="nav-contactos">Contactos</a>
       </nav>
-      <div class="lang-switcher" id="lang-switcher">
-        <img src="flag-pt.png" class="lang-flag active" data-lang="pt" alt="Português">
-        <img src="flag-gb.png" class="lang-flag" data-lang="en" alt="English">
-        <img src="flag-fr.png" class="lang-flag" data-lang="fr" alt="Français">
-        <img src="flag-de.png" class="lang-flag" data-lang="de" alt="Deutsch">
-      </div>
     </div>
   </header>
   <div class="categoria-bar" id="categoria-bar" style="display:none;">
@@ -552,165 +470,105 @@
   </footer>
   <div id="modal-container" style="display:none;"></div>
 <script>
-// Multilingual strings (PT/EN/FR/DE)
-const langs = {
-  pt: {
-    home: "Home",
-    sobrenos: "Sobre Nós",
-    catalogo: "Catálogo",
-    contactos: "Contactos",
-    nossos_produtos: "Os nossos produtos",
-    sobre_nos_title: "Sobre Nós",
-    sobre_nos_desc: "Somos especialistas em pisos e revestimentos.<br>Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.",
-    categoria: "Categoria",
-    interior: "Interior",
-    exterior: "Exterior",
-    cozinha: "Cozinha",
-    nenhum_produto: "Nenhum produto encontrado para essa categoria.",
-    contacte_nos: "Contacte-nos",
-    nome: "Nome*",
-    email: "Email*",
-    telefone: "Telefone*",
-    assunto: "Assunto",
-    mensagem: "Mensagem",
-    enviar: "ENVIAR",
-    privacidade: "Os dados pessoais fornecidos servem apenas para responder às questões solicitadas.",
-    area_calc: "Calculadora de área (m²)",
-    largura: "Largura (m)",
-    comprimento: "Comprimento (m)",
-    calcular: "Calcular",
-    resultado: (area, rec) => `Vai precisar de ${area} m² → recomendamos ${rec} m² com margem de 7%.`,
-    area_placeholder: "Introduza largura e comprimento",
-    ficha_tecnica: "Ficha técnica",
-    instrucao: "Instruções de instalação",
-    area_prof: "Área técnica/profissional",
-    ideal_para: "Ideal para arquitetos, engenheiros e construção"
+const artigos = [
+  {
+    categoria: "interior",
+    nome: "Laminado Premium",
+    preco: "€29,90/m²",
+    imagem: "laminado_premium_3d.png",
+    descricao: "Laminado de alta durabilidade, indicado para salas e quartos.",
+    medidas: "Medidas: 1,20m x 0,20m x 8mm"
   },
-  en: {
-    home: "Home",
-    sobrenos: "About Us",
-    catalogo: "Catalogue",
-    contactos: "Contact",
-    nossos_produtos: "Our Products",
-    sobre_nos_title: "About Us",
-    sobre_nos_desc: "We are specialists in flooring and coverings.<br>We work with durable and elegant materials, always focused on customer satisfaction.",
-    categoria: "Category",
-    interior: "Indoor",
-    exterior: "Outdoor",
-    cozinha: "Kitchen",
-    nenhum_produto: "No products found for this category.",
-    contacte_nos: "Contact us",
-    nome: "Name*",
-    email: "Email*",
-    telefone: "Phone*",
-    assunto: "Subject",
-    mensagem: "Message",
-    enviar: "SEND",
-    privacidade: "Personal data provided will only be used to answer your questions.",
-    area_calc: "Area calculator (m²)",
-    largura: "Width (m)",
-    comprimento: "Length (m)",
-    calcular: "Calculate",
-    resultado: (area, rec) => `You will need ${area} m² → we recommend ${rec} m² with a 7% margin.`,
-    area_placeholder: "Enter width and length",
-    ficha_tecnica: "Technical sheet",
-    instrucao: "Installation instructions",
-    area_prof: "Technical/professional area",
-    ideal_para: "Ideal for architects, engineers, construction"
+  {
+    categoria: "interior",
+    nome: "Piso Madeira",
+    preco: "€27,50/m²",
+    imagem: "piso_madeira_3d.png",
+    descricao: "Piso com acabamento de madeira natural, aconchegante e elegante para ambientes internos.",
+    medidas: "Medidas: 1,80m x 0,18m x 12mm"
   },
-  fr: {
-    home: "Accueil",
-    sobrenos: "À propos",
-    catalogo: "Catalogue",
-    contactos: "Contact",
-    nossos_produtos: "Nos produits",
-    sobre_nos_title: "À propos",
-    sobre_nos_desc: "Nous sommes spécialistes des revêtements de sol.<br>Nous travaillons avec des matériaux durables et élégants, toujours axés sur la satisfaction du client.",
-    categoria: "Catégorie",
-    interior: "Intérieur",
-    exterior: "Extérieur",
-    cozinha: "Cuisine",
-    nenhum_produto: "Aucun produit trouvé pour cette catégorie.",
-    contacte_nos: "Contactez-nous",
-    nome: "Nom*",
-    email: "Email*",
-    telefone: "Téléphone*",
-    assunto: "Sujet",
-    mensagem: "Message",
-    enviar: "ENVOYER",
-    privacidade: "Les données personnelles fournies servent uniquement à répondre à vos questions.",
-    area_calc: "Calculateur de surface (m²)",
-    largura: "Largeur (m)",
-    comprimento: "Longueur (m)",
-    calcular: "Calculer",
-    resultado: (area, rec) => `Vous aurez besoin de ${area} m² → nous recommandons ${rec} m² avec une marge de 7%.`,
-    area_placeholder: "Saisir largeur et longueur",
-    ficha_tecnica: "Fiche technique",
-    instrucao: "Instructions d'installation",
-    area_prof: "Espace technique/professionnel",
-    ideal_para: "Idéal pour architectes, ingénieurs, construction"
+  {
+    categoria: "exterior",
+    nome: "Pedra Natural",
+    preco: "€45,00/m²",
+    imagem: "pedra_natural_3d.png",
+    descricao: "Revestimento em pedra natural para um visual rústico e sofisticado em áreas externas.",
+    medidas: "Medidas: 0,60m x 0,40m x 20mm"
   },
-  de: {
-    home: "Startseite",
-    sobrenos: "Über uns",
-    catalogo: "Katalog",
-    contactos: "Kontakt",
-    nossos_produtos: "Unsere Produkte",
-    sobre_nos_title: "Über uns",
-    sobre_nos_desc: "Wir sind Spezialisten für Bodenbeläge und Verkleidungen.<br>Wir arbeiten mit langlebigen und eleganten Materialien, stets mit Fokus auf Kundenzufriedenheit.",
-    categoria: "Kategorie",
-    interior: "Innenbereich",
-    exterior: "Außenbereich",
-    cozinha: "Küche",
-    nenhum_produto: "Für diese Kategorie wurden keine Produkte gefunden.",
-    contacte_nos: "Kontaktieren Sie uns",
-    nome: "Name*",
-    email: "E-Mail*",
-    telefone: "Telefon*",
-    assunto: "Betreff",
-    mensagem: "Nachricht",
-    enviar: "SENDEN",
-    privacidade: "Die angegebenen personenbezogenen Daten werden nur zur Beantwortung Ihrer Anfrage verwendet.",
-    area_calc: "Flächenrechner (m²)",
-    largura: "Breite (m)",
-    comprimento: "Länge (m)",
-    calcular: "Berechnen",
-    resultado: (area, rec) => `Sie benötigen ${area} m² → Wir empfehlen ${rec} m² mit 7% Aufschlag.`,
-    area_placeholder: "Breite und Länge eingeben",
-    ficha_tecnica: "Technisches Datenblatt",
-    instrucao: "Montageanleitung",
-    area_prof: "Technischer/Professioneller Bereich",
-    ideal_para: "Ideal für Architekten, Ingenieure, Bau"
+  {
+    categoria: "cozinha",
+    nome: "Azulejo Mármore Branco",
+    preco: "€34,80/m²",
+    imagem: "azulejo_marmore_branco_3d.png",
+    descricao: "Azulejo com acabamento em mármore branco, sofisticado e resistente à umidade.",
+    medidas: "Medidas: 0,60m x 0,30m x 8mm"
+  },
+  {
+    categoria: "cozinha",
+    nome: "Azulejo Texturado Bege",
+    preco: "€22,90/m²",
+    imagem: "azulejo_texturado_bege_3d.png",
+    descricao: "Azulejo bege texturado, perfeito para cozinhas modernas e aconchegantes.",
+    medidas: "Medidas: 0,25m x 0,40m x 7mm"
+  },
+  {
+    categoria: "cozinha",
+    nome: "Azulejo Decorativo Azul",
+    preco: "€28,50/m²",
+    imagem: "azulejo_decorativo_azul_3d.png",
+    descricao: "Azulejo decorativo azul, destaque elegante para paredes de cozinhas.",
+    medidas: "Medidas: 0,20m x 0,20m x 6mm"
+  },
+  {
+    categoria: "exterior",
+    nome: "Deck Composto",
+    preco: "€31,00/m²",
+    imagem: "deck_composto_3d.png",
+    descricao: "Deck composto resistente às intempéries, perfeito para jardins e varandas.",
+    medidas: "Medidas: 2,20m x 0,15m x 22mm"
+  },
+  {
+    categoria: "exterior",
+    nome: "Tijoleira",
+    preco: "€19,90/m²",
+    imagem: "tijoleira_3d.png",
+    descricao: "Tijoleira de alta resistência, ideal para áreas externas e jardins.",
+    medidas: "Medidas: 0,40m x 0,40m x 12mm"
+  },
+  {
+    categoria: "exterior",
+    nome: "Tijoleira Terracota",
+    preco: "€23,90/m²",
+    imagem: "tijoleira_terracota_3d.png",
+    descricao: "Tijoleira terracota tradicional, perfeita para áreas externas, varandas e ambientes rústicos.",
+    medidas: "Medidas: 0,30m x 0,30m x 10mm"
+  },
+  {
+    categoria: "cozinha",
+    nome: "Azulejo Branco",
+    preco: "€14,50/m²",
+    imagem: "azulejo_branco_3d.png",
+    descricao: "Azulejo branco clássico, perfeito para cozinhas modernas e elegantes.",
+    medidas: "Medidas: 0,15m x 0,15m x 5mm"
+  },
+  {
+    categoria: "interior",
+    nome: "Piso Cinza",
+    preco: "€22,00/m²",
+    imagem: "piso_cinza_3d.png",
+    descricao: "Piso cinza sofisticado para ambientes internos, fácil de limpar.",
+    medidas: "Medidas: 0,90m x 0,15m x 10mm"
+  },
+  {
+    categoria: "interior",
+    nome: "Painel Vinil",
+    preco: "€24,90/m²",
+    imagem: "painel_vinil_3d.png",
+    descricao: "Painel de vinil com textura de madeira, resistente à humidade e fácil de instalar.",
+    medidas: "Medidas: 1,22m x 0,18m x 5mm"
   }
-};
-let currentLang = 'pt';
-function setLang(lang) {
-  if (!langs[lang]) lang = 'pt';
-  currentLang = lang;
-  document.querySelectorAll('.lang-flag').forEach(flag => {
-    if (flag.dataset.lang === lang) flag.classList.add('active');
-    else flag.classList.remove('active');
-  });
-  // Update nav
-  document.getElementById('nav-home').textContent = langs[lang].home;
-  document.getElementById('nav-sobrenos').textContent = langs[lang].sobrenos;
-  document.getElementById('nav-catalogo').textContent = langs[lang].catalogo;
-  document.getElementById('nav-contactos').textContent = langs[lang].contactos;
-  // Update categoria select
-  document.getElementById('categoriaSelect').options[0].text = langs[lang].categoria;
-  document.getElementById('categoriaSelect').options[1].text = langs[lang].interior;
-  document.getElementById('categoriaSelect').options[2].text = langs[lang].exterior;
-  document.getElementById('categoriaSelect').options[3].text = langs[lang].cozinha;
-  // Rerender current page (keep active nav)
-  const activeNav = document.querySelector('.main-nav a.active').id;
-  if (activeNav === 'nav-home') renderHome();
-  else if (activeNav === 'nav-catalogo') renderCatalogo(document.getElementById('categoriaSelect').value);
-  else if (activeNav === 'nav-sobrenos') renderSobreNos();
-  else if (activeNav === 'nav-contactos') renderContactos();
-}
-document.querySelectorAll('.lang-flag').forEach(flag => {
-  flag.onclick = () => setLang(flag.dataset.lang);
-});
+];
+
 function setActiveNav(id) {
   document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -723,113 +581,65 @@ function showCategoriaBar() {
 }
 function renderHome() {
   hideCategoriaBar();
-  const tr = langs[currentLang];
   const main = document.getElementById('main-content');
   main.innerHTML = `
-    <div class="home-title">${tr.nossos_produtos}</div>
+    <div class="home-title">Os nossos produtos</div>
     <div class="gallery">
-      ${artigos.map((a, idx) => artigoCardHTML(a, idx, tr)).join('')}
+      ${artigos.map(a => `<img src="${a.imagem}" alt="${a.nome}">`).join('')}
     </div>
     <section class="home-sobrenos">
-      <div class="home-sobrenos-title">${tr.sobre_nos_title}</div>
-      <div class="home-sobrenos-desc">${tr.sobre_nos_desc}</div>
+      <div class="home-sobrenos-title">Sobre Nós</div>
+      <div class="home-sobrenos-desc">
+        Somos especialistas em pisos e revestimentos.<br>
+        Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.
+      </div>
     </section>
   `;
-  attachArticleCardHandlers();
 }
 function renderCatalogo(selectedCategoria = "todos") {
   showCategoriaBar();
-  const tr = langs[currentLang];
   const main = document.getElementById('main-content');
   let filtered = selectedCategoria === "todos" ? artigos : artigos.filter(a => a.categoria === selectedCategoria);
   if(filtered.length === 0) {
-    main.innerHTML = `<p style="text-align:center;margin:2rem 0;">${tr.nenhum_produto}</p>`;
+    main.innerHTML = `<p style="text-align:center;margin:2rem 0;">Nenhum produto encontrado para essa categoria.</p>`;
     return;
   }
   main.innerHTML = `
     <div class="catalog-grid">
-      ${filtered.map((a, idx) => artigoCardHTML(a, idx, tr)).join('')}
+      ${filtered.map((a,i) => `
+      <div class="artigo-card" data-idx="${i}" tabindex="0">
+        <img src="${a.imagem}" alt="${a.nome}">
+        <div class="info">
+          <div class="artigo-nome">${a.nome}</div>
+          <div class="artigo-preco">${a.preco}</div>
+          <div class="artigo-medidas">${a.medidas}</div>
+          <div class="artigo-desc">${a.descricao}</div>
+        </div>
+      </div>
+      `).join('')}
     </div>
   `;
-  attachArticleCardHandlers();
-}
-function renderSobreNos() {
-  hideCategoriaBar();
-  const tr = langs[currentLang];
-  const main = document.getElementById('main-content');
-  main.innerHTML = `
-    <section class="home-sobrenos" style="margin-top:3rem;">
-      <div class="home-sobrenos-title">${tr.sobre_nos_title}</div>
-      <div class="home-sobrenos-desc">${tr.sobre_nos_desc}</div>
-    </section>
-    <div style="margin:2.5rem auto;max-width:700px;text-align:center;">
-      <div style="font-weight:700;color:#003366;margin-bottom:0.2rem;">${tr.area_prof}</div>
-      <div style="color:#133d61;font-size:1.07rem">${tr.ideal_para}</div>
-    </div>
-  `;
-}
-function artigoCardHTML(a, idx, tr) {
-  return `
-  <div class="artigo-card" data-idx="${idx}" tabindex="0">
-    <img src="${a.imagem}" alt="${a.nome}">
-    <div class="info">
-      <div class="artigo-nome">${a.nome}</div>
-      <div class="artigo-preco">${a.preco}</div>
-      <div class="artigo-medidas">${a.medidas}</div>
-      <div class="artigo-desc">${a.descricao}</div>
-      <div class="extra-area">
-        <div style="font-weight:700;color:#003366;">${tr.area_calc}</div>
-        <label>${tr.largura}: <input type="number" min="0" step="0.01" class="input-largura" placeholder="m" style="width:65px;"></label>
-        <label>${tr.comprimento}: <input type="number" min="0" step="0.01" class="input-comprimento" placeholder="m" style="width:65px;"></label>
-        <button type="button" class="calc-area-btn" style="margin-left:1rem;">${tr.calcular}</button>
-        <div class="area-result" style="margin-top:0.35rem;"></div>
-      </div>
-      <div class="extra-tech">
-        <span class="extra-tech-title">${tr.ficha_tecnica}</span>
-        <a href="ficha_tecnica.pdf" target="_blank" rel="noopener" style="margin-right:0.6rem;">${tr.ficha_tecnica}</a>
-        <a href="instrucoes_instalacao.pdf" target="_blank" rel="noopener">${tr.instrucao}</a>
-      </div>
-      <div class="extra-tech">
-        <span class="extra-tech-title">${tr.area_prof}</span>
-        <span>${tr.ideal_para}</span>
-      </div>
-    </div>
-  </div>
-  `;
-}
-function attachArticleCardHandlers() {
-  // Area calculator for each article card
   document.querySelectorAll('.artigo-card').forEach(card => {
-    const largura = card.querySelector('.input-largura');
-    const comprimento = card.querySelector('.input-comprimento');
-    const btn = card.querySelector('.calc-area-btn');
-    const result = card.querySelector('.area-result');
-    btn.onclick = () => {
-      if (!largura.value || !comprimento.value || largura.value <= 0 || comprimento.value <= 0) {
-        result.textContent = langs[currentLang].area_placeholder;
-        result.style.color = "#d22";
-        return;
-      }
-      let area = Number(largura.value) * Number(comprimento.value);
-      let areaRound = Math.round(area * 100) / 100;
-      let rec = Math.ceil(areaRound * 1.07);
-      result.textContent = langs[currentLang].resultado(areaRound, rec);
-      result.style.color = "#133d61";
-    };
-  });
-  document.querySelectorAll('.artigo-card').forEach(card => {
-    card.onclick = function(e) {
-      // Prevent opening modal if click was on area calc inputs or buttons
-      if (e.target.classList.contains('input-largura') ||
-          e.target.classList.contains('input-comprimento') ||
-          e.target.classList.contains('calc-area-btn')) return;
+    card.onclick = function() {
       const idx = this.getAttribute('data-idx');
-      showArtigoModal(artigos[idx]);
+      showArtigoModal(filtered[idx]);
     }
   });
 }
+function renderSobreNos() {
+  hideCategoriaBar();
+  const main = document.getElementById('main-content');
+  main.innerHTML = `
+    <section class="home-sobrenos" style="margin-top:3rem;">
+      <div class="home-sobrenos-title">Sobre Nós</div>
+      <div class="home-sobrenos-desc">
+        Somos especialistas em pisos e revestimentos.<br>
+        Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.
+      </div>
+    </section>
+  `;
+}
 function showArtigoModal(artigo) {
-  const tr = langs[currentLang];
   const modalContainer = document.getElementById('modal-container');
   modalContainer.innerHTML = `
     <div class="modal-bg" tabindex="-1">
@@ -840,43 +650,10 @@ function showArtigoModal(artigo) {
         <div class="artigo-preco">${artigo.preco}</div>
         <div class="artigo-medidas">${artigo.medidas}</div>
         <div class="artigo-desc">${artigo.descricao}</div>
-        <div class="extra-area">
-          <div style="font-weight:700;color:#003366;">${tr.area_calc}</div>
-          <label>${tr.largura}: <input type="number" min="0" step="0.01" class="input-largura" placeholder="m" style="width:65px;"></label>
-          <label>${tr.comprimento}: <input type="number" min="0" step="0.01" class="input-comprimento" placeholder="m" style="width:65px;"></label>
-          <button type="button" class="calc-area-btn" style="margin-left:1rem;">${tr.calcular}</button>
-          <div class="area-result" style="margin-top:0.35rem;"></div>
-        </div>
-        <div class="extra-tech">
-          <span class="extra-tech-title">${tr.ficha_tecnica}</span>
-          <a href="ficha_tecnica.pdf" target="_blank" rel="noopener" style="margin-right:0.6rem;">${tr.ficha_tecnica}</a>
-          <a href="instrucoes_instalacao.pdf" target="_blank" rel="noopener">${tr.instrucao}</a>
-        </div>
-        <div class="extra-tech">
-          <span class="extra-tech-title">${tr.area_prof}</span>
-          <span>${tr.ideal_para}</span>
-        </div>
       </div>
     </div>
   `;
   modalContainer.style.display = '';
-  // Area calculator in modal
-  const largura = modalContainer.querySelector('.input-largura');
-  const comprimento = modalContainer.querySelector('.input-comprimento');
-  const btn = modalContainer.querySelector('.calc-area-btn');
-  const result = modalContainer.querySelector('.area-result');
-  btn.onclick = () => {
-    if (!largura.value || !comprimento.value || largura.value <= 0 || comprimento.value <= 0) {
-      result.textContent = langs[currentLang].area_placeholder;
-      result.style.color = "#d22";
-      return;
-    }
-    let area = Number(largura.value) * Number(comprimento.value);
-    let areaRound = Math.round(area * 100) / 100;
-    let rec = Math.ceil(areaRound * 1.07);
-    result.textContent = langs[currentLang].resultado(areaRound, rec);
-    result.style.color = "#133d61";
-  };
   modalContainer.querySelector('.modal-bg').onclick = function(e) {
     if(e.target === this) closeModal();
   }
@@ -886,31 +663,32 @@ function closeModal() {
 }
 function renderContactos() {
   hideCategoriaBar();
-  const tr = langs[currentLang];
   const main = document.getElementById('main-content');
   main.innerHTML = `
     <div class="contactos-form-wrap">
       <form class="contactos-form" autocomplete="off" action="https://formspree.io/f/xzzgvbba" method="POST">
-        <div class="contactos-form-title">${tr.contacte_nos}</div>
-        <input name="nome" type="text" placeholder="${tr.nome}" required>
-        <input name="email" type="email" placeholder="${tr.email}" required>
-        <input name="telefone" type="text" placeholder="${tr.telefone}" required>
-        <input name="assunto" type="text" placeholder="${tr.assunto}">
-        <textarea name="mensagem" placeholder="${tr.mensagem}" rows="4" required></textarea>
-        <button type="submit">${tr.enviar}</button>
+        <div class="contactos-form-title">Contacte-nos</div>
+        <input name="nome" type="text" placeholder="Nome*" required>
+        <input name="email" type="email" placeholder="Email*" required>
+        <input name="telefone" type="text" placeholder="Telefone*" required>
+        <input name="assunto" type="text" placeholder="Assunto">
+        <textarea name="mensagem" placeholder="Mensagem" rows="4" required></textarea>
+        <button type="submit">ENVIAR</button>
         <div class="contactos-form-privacy">
-          ${tr.privacidade}
+          Os dados pessoais fornecidos servem apenas para responder às questões solicitadas.
         </div>
       </form>
     </div>
   `;
 }
+
 window.addEventListener('pageshow', function(event) {
   document.querySelectorAll('form').forEach(form => {
     form.reset();
     form.querySelectorAll('input, textarea').forEach(f => f.value = '');
   });
 });
+
 document.getElementById('nav-home').onclick = (e)=>{
   e.preventDefault();
   setActiveNav('nav-home');
@@ -934,7 +712,6 @@ document.getElementById('nav-contactos').onclick = (e)=>{
 document.getElementById('categoriaSelect').onchange = function() {
   renderCatalogo(this.value);
 };
-// Initial rendering
 renderHome();
 </script>
 </body>
