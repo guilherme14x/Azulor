@@ -458,22 +458,6 @@
   </footer>
   <div id="modal-container" style="display:none;"></div>
 <script>
-const translations = {
-  menu: {
-    en: ["Home","About Us","Catalogue","Contact"]
-  },
-  homeTitle: {
-    en: "Our Products"
-  },
-  sobreNosTitle: {
-    en: "About Us"
-  },
-  sobreNosDesc: {
-    en: `We are specialists in flooring and wall coverings.<br>
-We work with durable and elegant materials, always focusing on customer satisfaction.`
-  }
-};
-
 const artigos = [
   {
     categoria: "interior",
@@ -533,19 +517,19 @@ const artigos = [
   },
   {
     categoria: "exterior",
-    nome: "Terra Cotta Tile",
-    preco: "€23.90/m²",
-    imagem: "tijoleira_terracota_3d.png",
-    descricao: "Traditional terra cotta tile, perfect for outdoor areas, balconies, and rustic settings.",
-    medidas: "Dimensions: 0.30m x 0.30m x 10mm"
-  },
-  {
-    categoria: "exterior",
     nome: "Tile",
     preco: "€19.90/m²",
     imagem: "tijoleira_3d.png",
     descricao: "High-resistance tile, ideal for outdoor areas and gardens.",
     medidas: "Dimensions: 0.40m x 0.40m x 12mm"
+  },
+  {
+    categoria: "exterior",
+    nome: "Terra Cotta Tile",
+    preco: "€23.90/m²",
+    imagem: "tijoleira_terracota_3d.png",
+    descricao: "Traditional terra cotta tile, perfect for outdoor areas, balconies, and rustic settings.",
+    medidas: "Dimensions: 0.30m x 0.30m x 10mm"
   },
   {
     categoria: "kitchen",
@@ -578,38 +562,12 @@ function setActiveNav(id) {
   document.getElementById(id).classList.add('active');
 }
 function renderMenu() {
-  const nav = document.getElementById('main-nav');
-  nav.innerHTML = `
-    <a href="#" id="nav-home" class="active">${translations.menu.en[0]}</a>
-    <a href="#" id="nav-sobrenos">${translations.menu.en[1]}</a>
-    <a href="#" id="nav-catalogo">${translations.menu.en[2]}</a>
-    <a href="#" id="nav-contactos">${translations.menu.en[3]}</a>
-  `;
-  document.getElementById('nav-home').onclick = (e)=>{
-    e.preventDefault();
-    setActiveNav('nav-home');
-    renderHome();
-  };
-  document.getElementById('nav-sobrenos').onclick = (e)=>{
-    e.preventDefault();
-    setActiveNav('nav-sobrenos');
-    renderSobreNos();
-  };
-  document.getElementById('nav-catalogo').onclick = (e)=>{
-    e.preventDefault();
-    setActiveNav('nav-catalogo');
-    renderCatalogo();
-  };
-  document.getElementById('nav-contactos').onclick = (e)=>{
-    e.preventDefault();
-    setActiveNav('nav-contactos');
-    renderContactos();
-  };
+  // Menu is static in this version, so nothing needed here
 }
 function renderHome() {
   const main = document.getElementById('main-content');
   main.innerHTML = `
-    <div class="home-title">${translations.homeTitle.en}</div>
+    <div class="home-title">Our Products</div>
     <div class="catalog-grid">
       ${artigos.map(a => `
       <div class="artigo-card" tabindex="0">
@@ -624,9 +582,10 @@ function renderHome() {
       `).join('')}
     </div>
     <section class="home-sobrenos">
-      <div class="home-sobrenos-title">${translations.sobreNosTitle.en}</div>
+      <div class="home-sobrenos-title">About Us</div>
       <div class="home-sobrenos-desc">
-        ${translations.sobreNosDesc.en}
+        We are specialists in flooring and wall coverings.<br>
+        We work with durable and elegant materials, always focusing on customer satisfaction.
       </div>
     </section>
   `;
@@ -640,9 +599,10 @@ function renderSobreNos() {
   const main = document.getElementById('main-content');
   main.innerHTML = `
     <section class="home-sobrenos" style="margin-top:3rem;">
-      <div class="home-sobrenos-title">${translations.sobreNosTitle.en}</div>
+      <div class="home-sobrenos-title">About Us</div>
       <div class="home-sobrenos-desc">
-        ${translations.sobreNosDesc.en}
+        We are specialists in flooring and wall coverings.<br>
+        We work with durable and elegant materials, always focusing on customer satisfaction.
       </div>
     </section>
   `;
@@ -712,17 +672,33 @@ function renderContactos() {
   `;
 }
 
+// Static menu, so just assign event handlers here
+document.getElementById('nav-home').onclick = (e)=>{
+  e.preventDefault();
+  setActiveNav('nav-home');
+  renderHome();
+};
+document.getElementById('nav-sobrenos').onclick = (e)=>{
+  e.preventDefault();
+  setActiveNav('nav-sobrenos');
+  renderSobreNos();
+};
+document.getElementById('nav-catalogo').onclick = (e)=>{
+  e.preventDefault();
+  setActiveNav('nav-catalogo');
+  renderCatalogo();
+};
+document.getElementById('nav-contactos').onclick = (e)=>{
+  e.preventDefault();
+  setActiveNav('nav-contactos');
+  renderContactos();
+};
 // Language switcher (only highlights the English flag)
-function setupLangSwitcher() {
-  document.querySelectorAll('.lang-flag').forEach(flag => {
-    flag.classList.remove('active');
-    if(flag.dataset.lang === 'en') flag.classList.add('active');
-  });
-}
+document.querySelectorAll('.lang-flag').forEach(flag => {
+  flag.classList.remove('active');
+  if(flag.dataset.lang === 'en') flag.classList.add('active');
+});
 
-// Initial page load
-renderMenu();
-setupLangSwitcher();
 renderHome();
 </script>
 </body>
