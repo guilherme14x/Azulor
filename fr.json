@@ -1,0 +1,18 @@
+{
+  "nav-home": "Accueil",
+  "nav-sobrenos": "À propos",
+  "nav-catalogo": "Catalogue",
+  "nav-contactos": "Contact",
+  "form-title": "Contactez-nous",
+  "form-nome": "Nom*",
+  "form-email": "Email*",
+  "form-telefone": "Téléphone*",
+  "form-assunto": "Sujet",
+  "form-mensagem": "Message",
+  "form-button": "ENVOYER",
+  "form-privacy": "Les données personnelles fournies servent uniquement à répondre aux questions posées.",
+  "produtos-titulo": "Nos Produits",
+  "sobrenos-titulo": "À propos",
+  "sobrenos-desc": "Nous sommes spécialistes des sols et revêtements.\nNous utilisons des matériaux durables et élégants, toujours axés sur la satisfaction du client.",
+  "sem-produtos": "Aucun produit trouvé pour cette catégorie."
+}

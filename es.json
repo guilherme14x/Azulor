@@ -1,0 +1,18 @@
+{
+  "nav-home": "Inicio",
+  "nav-sobrenos": "Sobre Nosotros",
+  "nav-catalogo": "Catálogo",
+  "nav-contactos": "Contacto",
+  "form-title": "Contáctanos",
+  "form-nome": "Nombre*",
+  "form-email": "Correo*",
+  "form-telefone": "Teléfono*",
+  "form-assunto": "Asunto",
+  "form-mensagem": "Mensaje",
+  "form-button": "ENVIAR",
+  "form-privacy": "Los datos personales proporcionados solo se utilizan para responder a las consultas.",
+  "produtos-titulo": "Nuestros Productos",
+  "sobrenos-titulo": "Sobre Nosotros",
+  "sobrenos-desc": "Somos especialistas en pisos y revestimientos.\nTrabajamos con materiales duraderos y elegantes, siempre enfocados en la satisfacción del cliente.",
+  "sem-produtos": "No se encontraron productos para esta categoría."
+}

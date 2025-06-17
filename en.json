@@ -1,0 +1,18 @@
+{
+  "nav-home": "Home",
+  "nav-sobrenos": "About Us",
+  "nav-catalogo": "Catalogue",
+  "nav-contactos": "Contact",
+  "form-title": "Contact us",
+  "form-nome": "Name*",
+  "form-email": "Email*",
+  "form-telefone": "Phone*",
+  "form-assunto": "Subject",
+  "form-mensagem": "Message",
+  "form-button": "SEND",
+  "form-privacy": "The personal data provided is only used to respond to your queries.",
+  "produtos-titulo": "Our Products",
+  "sobrenos-titulo": "About Us",
+  "sobrenos-desc": "We are specialists in floors and coatings.\nWe work with durable and elegant materials, always focused on customer satisfaction.",
+  "sem-produtos": "No products found for this category."
+}

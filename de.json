@@ -1,0 +1,18 @@
+{
+  "nav-home": "Startseite",
+  "nav-sobrenos": "Über uns",
+  "nav-catalogo": "Katalog",
+  "nav-contactos": "Kontakt",
+  "form-title": "Kontaktieren Sie uns",
+  "form-nome": "Name*",
+  "form-email": "E-Mail*",
+  "form-telefone": "Telefon*",
+  "form-assunto": "Betreff",
+  "form-mensagem": "Nachricht",
+  "form-button": "SENDEN",
+  "form-privacy": "Die bereitgestellten personenbezogenen Daten dienen nur zur Beantwortung der gestellten Fragen.",
+  "produtos-titulo": "Unsere Produkte",
+  "sobrenos-titulo": "Über uns",
+  "sobrenos-desc": "Wir sind Spezialisten für Böden und Verkleidungen.\nWir arbeiten mit langlebigen und eleganten Materialien und konzentrieren uns stets auf die Kundenzufriedenheit.",
+  "sem-produtos": "Keine Produkte für diese Kategorie gefunden."
+}
