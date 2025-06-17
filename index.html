@@ -18,12 +18,10 @@
     body {
       display: flex;
       flex-direction: column;
-      min-width: 0;
       min-height: 100vh;
       font-family: 'Inter', sans-serif;
       color: #222;
     }
-    /* HEADER & FOOTER ARE FULL WIDTH */
     .main-header, footer {
       width: 100%;
       background: #04243d;
@@ -122,7 +120,8 @@
     }
     .categoria-bar {
       background: #fff;
-      padding: 2rem 0 0 0;
+      /* FIX: Increase top padding to show select fully */
+      padding: 2.5rem 0 0 0;
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
@@ -135,12 +134,14 @@
     }
     .categoria-select-wrapper {
       margin-left: 5vw;
+      /* Optional: margin-top for extra space if you want more */
+      /* margin-top: 0.5rem; */
     }
     .categoria-select {
       background: #04243d;
       color: #fff;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 0.8rem 2.5rem 0.8rem 1rem;
       font-size: 1.1rem;
       font-family: inherit;
