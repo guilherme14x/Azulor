@@ -118,6 +118,7 @@
       border-bottom: 2px solid #fff;
       font-weight: 700;
     }
+
     .categoria-bar {
       background: #fff;
       padding: 2.5rem 0 0 0;
@@ -624,10 +625,14 @@ function renderContactos() {
     </div>
   `;
 }
-// Força limpar inputs ao voltar à página (ex: após back do obrigado do Formspree)
+
+// Limpa o formulário ao voltar da página de agradecimento do Formspree (bfcache, back etc)
 window.addEventListener('pageshow', function(event) {
-  // Se houver form na tela, reseta
-  document.querySelectorAll('form').forEach(form => form.reset());
+  // Se houver form na tela, reseta e limpa campos (trata browser bfcache)
+  document.querySelectorAll('form').forEach(form => {
+    form.reset();
+    form.querySelectorAll('input, textarea').forEach(f => f.value = '');
+  });
 });
 
 document.getElementById('nav-home').onclick = (e)=>{ e.preventDefault(); setActiveNav('nav-home'); renderHome(); };
