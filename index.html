@@ -160,23 +160,129 @@
       color: #133d61;
       margin: 3rem 0 0.5rem 0;
     }
-    .gallery {
+    .catalog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
-      padding: 2rem 2rem 0 2rem;
-      justify-items: center;
+      padding: 2rem;
       width: 100%;
       box-sizing: border-box;
     }
-    .gallery img {
+    .artigo-card {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+      overflow: hidden;
+      border: 4px solid #002244;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+      min-height: 370px;
+      background: #fff;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .artigo-card:hover {
+      transform: translateY(-5px) scale(1.03);
+    }
+    .artigo-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #eee;
+      display: block;
+    }
+    .artigo-card .info {
+      padding: 1.1rem 1rem 1.2rem 1rem;
+      text-align: center;
+      width: 100%;
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .artigo-nome {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: #133d61;
+    }
+    .artigo-preco {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #005199;
+      margin-bottom: 0.25rem;
+    }
+    .artigo-medidas {
+      color:#333;
+      font-size:1.04rem;
+      margin-bottom:0.2rem;
+      font-weight: 500;
+    }
+    .artigo-desc {
+      color:#444;
+      font-size: 1.03rem;
+    }
+    .modal-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 95vw;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.30);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .modal img {
       border-radius: 10px;
       width: 100%;
-      max-width: 300px;
-      height: 200px;
+      max-width: 420px;
+      height: 260px;
       object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+      margin-bottom: 1rem;
       background: #eee;
+    }
+    .modal .close-btn {
+      position: absolute;
+      right: 1.1rem;
+      top: 0.8rem;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: #444;
+      cursor: pointer;
+    }
+    .modal .artigo-nome {
+      font-size: 1.3rem;
+      margin-bottom: 0.2rem;
+      color: #133d61;
+    }
+    .modal .artigo-preco {
+      font-size: 1.1rem;
+      color: #005199;
+    }
+    .modal .artigo-medidas {
+      color:#333;
+      font-size:1rem;
+      margin-bottom:0.4rem;
+    }
+    .modal .artigo-desc {
+      margin:1rem 0 0.7rem 0;
+      color:#333;
     }
     .home-sobrenos {
       width: 100%;
@@ -198,70 +304,86 @@
       max-width: 600px;
       line-height: 1.5;
     }
-    .catalog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-      width: 100%;
+    .contactos-form-wrap {
+      width:100%;
+      background:#fff;
+      padding:2.5rem 0 2rem 0;
+      box-sizing:border-box;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:80px;
+    }
+    .contactos-form {
+      width:100%;
+      display:flex;
+      flex-direction:row;
+      align-items:flex-start;
+      flex-wrap:wrap;
+      gap:0.5rem;
+      background:#fff;
+      border-radius:18px;
+      box-shadow:none;
+      padding:0;
+      max-width:100%;
+      margin: 0 2rem;
+    }
+    .contactos-form-title {
+      font-size:1.2rem;
+      font-weight:700;
+      margin-bottom: 0.7rem;
+      color:#182024;
+      flex-basis: 100%;
+      margin-right: 0.5rem;
+    }
+    .contactos-form input,
+    .contactos-form textarea {
+      padding:0.4rem 0.6rem;
+      border-radius:4px;
+      border:1px solid #888;
+      font-size:1rem;
+      font-family:inherit;
+      margin-bottom:0;
+    }
+    .contactos-form input[type="text"],
+    .contactos-form input[type="email"] {
+      width: 180px;
       box-sizing: border-box;
     }
-    .artigo-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
-      overflow: hidden;
-      border: 4px solid #002244;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-      min-height: 270px;
-      background: #fff;
-      width: 100%;
-      box-sizing: border-box;
+    .contactos-form textarea {
+      min-height: 45px;
+      width: 200px;
+      margin-bottom:0;
+      resize:vertical;
     }
-    .artigo-card:hover {
-      transform: translateY(-5px) scale(1.03);
+    .contactos-form button {
+      background:#0d253a;
+      color:#fff;
+      font-weight:700;
+      font-size:1rem;
+      padding:0.5rem 1rem;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+      margin-bottom:0;
+      margin-left: 0.5rem;
+      transition: background 0.2s;
+      height: 38px;
     }
-    .artigo-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      background: #eee;
-      display: block;
+    .contactos-form button:hover {
+      background:#133d61;
     }
-    .artigo-card .info {
-      padding: 1rem;
-      text-align: center;
-      width: 100%;
+    .contactos-form-privacy {
+      font-size:0.99rem;
+      color:#222;
+      text-align:left;
+      opacity:0.85;
+      flex-basis: 100%;
+      margin-top: 0.3rem;
     }
-    .artigo-card .artigo-nome {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .artigo-card .artigo-preco {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #003366;
-      margin-bottom: 0.3rem;
-    }
-    .artigo-card .artigo-medidas {
-      color:#333;
-      font-size:0.98rem;
-      margin-bottom:0.3rem;
-    }
-    .artigo-card .artigo-desc {
-      color:#555;
-    }
-    /* ...modal, contactos, media queries, etc. remain as before... */
-    @media (max-width: 1300px) {
-      .main-header-inner,
-      .footer-inner,
-      main {
-        max-width: 100vw;
+    @media (max-width: 950px) {
+      .catalog-grid {
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       }
     }
     @media (max-width: 700px) {
@@ -277,18 +399,25 @@
       main {
         padding: 0.5rem;
       }
-      .gallery, .catalog-grid {
+      .catalog-grid {
         padding: 1rem 0.2rem 0 0.2rem;
         gap: 1rem;
       }
-      .contactos-form-wrap {
-        padding: 1.2rem 0 1.2rem 0;
-      }
       .contactos-form {
-        padding: 1.5rem 0.7rem 1.2rem 0.7rem;
+        flex-direction:column;
+        align-items:stretch;
+        padding:0;
       }
-      .home-title, .home-sobrenos-title {
-        font-size: 1.3rem;
+      .contactos-form input[type="text"],
+      .contactos-form input[type="email"],
+      .contactos-form textarea {
+        width: 100%;
+        margin-bottom: 0.3rem;
+      }
+      .contactos-form button {
+        margin-left: 0;
+        margin-bottom: 0.7rem;
+        width: 100%;
       }
     }
   </style>
@@ -312,7 +441,7 @@
         <a href="#" id="nav-contactos">Contactos</a>
       </nav>
       <div class="lang-switcher" id="lang-switcher">
-        <img src="flag-pt.png" alt="Português" class="lang-flag" data-lang="pt">
+        <img src="flag-pt.png" alt="Português" class="lang-flag active" data-lang="pt">
         <img src="flag-en.png" alt="English" class="lang-flag" data-lang="en">
         <img src="flag-fr.png" alt="Français" class="lang-flag" data-lang="fr">
         <img src="flag-de.png" alt="Deutsch" class="lang-flag" data-lang="de">
@@ -329,7 +458,7 @@
   </footer>
   <div id="modal-container" style="display:none;"></div>
 <script>
-const langs = ['pt','en','fr','de','es'];
+const langs = ['pt', 'en', 'fr', 'de', 'es'];
 let currentLang = 'pt';
 
 const translations = {
@@ -365,20 +494,6 @@ Nous travaillons avec des matériaux durables et élégants, toujours axés sur 
 Wir arbeiten mit langlebigen und eleganten Materialien und legen stets Wert auf Kundenzufriedenheit.`,
     es: `Somos especialistas en suelos y revestimientos.<br>
 Trabajamos con materiales duraderos y elegantes, siempre enfocados en la satisfacción del cliente.`
-  },
-  produtosTitle: {
-    pt: "PRODUTOS",
-    en: "PRODUCTS",
-    fr: "PRODUITS",
-    de: "PRODUKTE",
-    es: "PRODUCTOS"
-  },
-  produtosDesc: {
-    pt: "Conheça nossa ampla gama de pisos e revestimentos, que combinam qualidade, beleza e durabilidade.",
-    en: "Discover our wide range of flooring and coverings, combining quality, beauty, and durability.",
-    fr: "Découvrez notre large gamme de sols et revêtements, alliant qualité, beauté et durabilité.",
-    de: "Entdecken Sie unser breites Sortiment an Bodenbelägen und Verkleidungen, die Qualität, Schönheit und Langlebigkeit vereinen.",
-    es: "Conozca nuestra amplia gama de suelos y revestimientos, que combinan calidad, belleza y durabilidad."
   }
 };
 
@@ -518,8 +633,18 @@ function renderHome() {
   const main = document.getElementById('main-content');
   main.innerHTML = `
     <div class="home-title">${translations.homeTitle[currentLang]}</div>
-    <div class="gallery">
-      ${artigos.map(a => `<img src="${a.imagem}" alt="${a.nome}">`).join('')}
+    <div class="catalog-grid">
+      ${artigos.map(a => `
+      <div class="artigo-card" tabindex="0">
+        <img src="${a.imagem}" alt="${a.nome}">
+        <div class="info">
+          <div class="artigo-nome">${a.nome}</div>
+          <div class="artigo-preco">${a.preco}</div>
+          <div class="artigo-medidas">${a.medidas}</div>
+          <div class="artigo-desc">${a.descricao}</div>
+        </div>
+      </div>
+      `).join('')}
     </div>
     <section class="home-sobrenos">
       <div class="home-sobrenos-title">${translations.sobreNosTitle[currentLang]}</div>
@@ -528,6 +653,11 @@ function renderHome() {
       </div>
     </section>
   `;
+  document.querySelectorAll('.artigo-card').forEach((card, idx) => {
+    card.onclick = function() {
+      showArtigoModal(artigos[idx]);
+    }
+  });
 }
 function renderSobreNos() {
   const main = document.getElementById('main-content');
@@ -540,17 +670,12 @@ function renderSobreNos() {
     </section>
   `;
 }
-function renderCatalogo(selectedCategoria = "todos") {
+function renderCatalogo() {
   const main = document.getElementById('main-content');
-  let filtered = selectedCategoria === "todos" ? artigos : artigos.filter(a => a.categoria === selectedCategoria);
-  if(filtered.length === 0) {
-    main.innerHTML = `<p style="text-align:center;margin:2rem 0;">Nenhum produto encontrado para essa categoria.</p>`;
-    return;
-  }
   main.innerHTML = `
     <div class="catalog-grid">
-      ${filtered.map((a,i) => `
-      <div class="artigo-card" data-idx="${i}" tabindex="0">
+      ${artigos.map((a, i) => `
+      <div class="artigo-card" tabindex="0">
         <img src="${a.imagem}" alt="${a.nome}">
         <div class="info">
           <div class="artigo-nome">${a.nome}</div>
@@ -562,10 +687,9 @@ function renderCatalogo(selectedCategoria = "todos") {
       `).join('')}
     </div>
   `;
-  document.querySelectorAll('.artigo-card').forEach(card => {
+  document.querySelectorAll('.artigo-card').forEach((card, idx) => {
     card.onclick = function() {
-      const idx = this.getAttribute('data-idx');
-      showArtigoModal(filtered[idx]);
+      showArtigoModal(artigos[idx]);
     }
   });
 }
@@ -631,7 +755,6 @@ function setupLangSwitcher() {
       }
     }
   });
-  // Set default flag active
   document.querySelector(`.lang-flag[data-lang="${currentLang}"]`).classList.add('active');
 }
 
