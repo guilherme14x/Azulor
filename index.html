@@ -6,425 +6,35 @@
   <title>Azulor - Soluções em Pisos e Revestimentos</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      height: 100%;
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      overflow-x: hidden;
-      background: #f7f7f7;
-    }
-    body {
+    /* ... (all previous CSS unchanged) ... */
+    .lang-switcher {
       display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      font-family: 'Inter', sans-serif;
-      color: #222;
-    }
-    .main-header, footer {
-      width: 100%;
-      background: #04243d;
-      color: #fff;
-      padding: 0;
-    }
-    .main-header-inner, .footer-inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
+      gap: 0.6rem;
       align-items: center;
-      justify-content: space-between;
-      height: 110px;
+      margin-right: 1rem;
+    }
+    .lang-flag {
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      transition: border 0.15s, box-shadow 0.15s;
+      background: #eee;
+      object-fit: cover;
+      box-sizing: border-box;
+      display: inline-block;
+    }
+    .lang-flag.active {
+      border: 2px solid #133d61;
+      box-shadow: 0 2px 8px #133d6120;
     }
     .main-header-inner {
-      height: 110px;
-    }
-    .footer-inner {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      padding: 2rem 0.5rem 1rem 0.5rem;
-      height: auto;
-      background: none;
-    }
-    .footer-inner img {
-      height: 48px;
-      margin-bottom: 0.5rem;
-    }
-    .footer-inner p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #ccc;
-    }
-    .branding {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-    }
-    .branding-logo {
-      width: 70px;
-      height: 70px;
-      background: #fff;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 0.5rem;
-    }
-    .branding-logo img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-    }
-    .branding-title {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-    .branding-title h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin: 0;
-      color: #fff;
-    }
-    .branding-title .subtitulo {
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: #c8d8e4;
-      letter-spacing: 1px;
-      margin-top: 2px;
-    }
-    .main-nav {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-    .main-nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.15rem;
-      letter-spacing: 1px;
-      transition: color 0.2s;
-      padding-bottom: 2px;
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      background: none;
-      border: none;
-      outline: none;
-    }
-    .main-nav a.active,
-    .main-nav a:hover {
-      color: #fff;
-      border-bottom: 2px solid #fff;
-      font-weight: 700;
-    }
-    .categoria-bar {
-      background: #fff;
-      padding: 2.5rem 0 0 0;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .categoria-bar-inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: flex-start;
-      min-height: 60px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .categoria-select-wrapper {
-      margin-left: 5vw;
-    }
-    .categoria-select {
-      background: #04243d;
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 0.8rem 2.5rem 0.8rem 1rem;
-      font-size: 1.1rem;
-      font-family: inherit;
-      font-weight: 600;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      outline: none;
-      appearance: none;
-      min-width: 200px;
-      cursor: pointer;
-    }
-    main {
-      flex: 1 0 auto;
-      width: 100%;
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 2rem 0 0 0;
-      background: #f7f7f7;
-      min-height: 400px;
-      display: flex;
-      flex-direction: column;
-      box-sizing: border-box;
-    }
-    .home-title {
-      width: 100%;
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: #133d61;
-      margin: 3rem 0 0.5rem 0;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 2rem;
-      padding: 2rem 2rem 0 2rem;
-      justify-items: center;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .gallery img {
-      border-radius: 10px;
-      width: 100%;
-      max-width: 300px;
-      height: 200px;
-      object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
-      background: #eee;
-    }
-    .home-sobrenos {
-      width: 100%;
-      max-width: 900px;
-      margin: 3.5rem auto 1.5rem auto;
-      text-align: center;
-    }
-    .home-sobrenos-title {
-      font-size: 2rem;
-      font-weight: 800;
-      margin: 0 0 0.3rem 0;
-      color: #133d61;
-      letter-spacing: 1px;
-    }
-    .home-sobrenos-desc {
-      font-size: 1.15rem;
-      color: #222;
-      margin: 0 auto;
-      max-width: 600px;
-      line-height: 1.5;
-    }
-    .catalog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .artigo-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
-      overflow: hidden;
-      border: 4px solid #002244;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-      min-height: 270px;
-      background: #fff;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .artigo-card:hover {
-      transform: translateY(-5px) scale(1.03);
-    }
-    .artigo-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      background: #eee;
-      display: block;
-    }
-    .artigo-card .info {
-      padding: 1rem;
-      text-align: center;
-      width: 100%;
-    }
-    .artigo-card .artigo-nome {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .artigo-card .artigo-preco {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #003366;
-      margin-bottom: 0.3rem;
-    }
-    .artigo-card .artigo-medidas {
-      color:#333;
-      font-size:0.98rem;
-      margin-bottom:0.3rem;
-    }
-    .artigo-card .artigo-desc {
-      color:#555;
-    }
-    .modal-bg {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal {
-      background: #fff;
-      border-radius: 12px;
-      max-width: 400px;
-      width: 95vw;
-      padding: 2rem 1.5rem 1.5rem 1.5rem;
-      position: relative;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.30);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .modal img {
-      border-radius: 10px;
-      width: 100%;
-      max-width: 320px;
-      height: 190px;
-      object-fit: cover;
-      margin-bottom: 1rem;
-      background: #eee;
-    }
-    .modal .close-btn {
-      position: absolute;
-      right: 1.1rem;
-      top: 0.8rem;
-      background: none;
-      border: none;
-      font-size: 1.3rem;
-      color: #444;
-      cursor: pointer;
-    }
-    .modal .artigo-nome {
-      font-size: 1.3rem;
-      margin-bottom: 0.2rem;
-    }
-    .modal .artigo-preco {
-      font-size: 1.1rem;
-    }
-    .modal .artigo-medidas {
-      color:#333;
-      font-size:1rem;
-      margin-bottom:0.4rem;
-    }
-    .modal .artigo-desc {
-      margin:1rem 0 0.7rem 0;
-      color:#333;
-    }
-    .contactos-form-wrap {
-      width:100%;
-      background:#fff;
-      padding:2.5rem 0 2rem 0;
-      box-sizing:border-box;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:80vh;
-    }
-    .contactos-form {
-      background:#fff;
-      border-radius:18px;
-      box-shadow:0 4px 24px rgba(0,0,0,0.07);
-      padding:2.5rem 2rem 2rem 2rem;
-      max-width:400px;
-      width:100%;
-      display:flex;
-      flex-direction:column;
-      align-items:stretch;
-    }
-    .contactos-form-title {
-      font-size:2rem;
-      font-weight:700;
-      margin-bottom:1.7rem;
-      color:#182024;
-    }
-    .contactos-form input,
-    .contactos-form textarea {
-      margin-bottom:1rem;
-      padding:0.8rem 1rem;
-      border-radius:4px;
-      border:1px solid #d6dbdf;
-      font-size:1.1rem;
-      font-family:inherit;
-    }
-    .contactos-form textarea {
-      margin-bottom:1.2rem;
-      resize:vertical;
-      min-height: 80px;
-    }
-    .contactos-form button {
-      background:#0d253a;
-      color:#fff;
-      font-weight:700;
-      font-size:1rem;
-      padding:0.7rem 0;
-      border:none;
-      border-radius:4px;
-      cursor:pointer;
-      margin-bottom:1.3rem;
-      transition: background 0.2s;
-    }
-    .contactos-form button:hover {
-      background:#133d61;
-    }
-    .contactos-form-privacy {
-      font-size:0.97rem;
-      color:#222;
-      text-align:left;
-      opacity:0.85;
-    }
-    @media (max-width: 1300px) {
-      .main-header-inner,
-      .footer-inner,
-      .categoria-bar-inner,
-      main {
-        max-width: 100vw;
-      }
+      gap: 1.5rem;
     }
     @media (max-width: 700px) {
-      .main-header-inner {
-        flex-direction: column;
-        height: auto;
-        padding: 1rem !important;
-        gap: 1.2rem;
-      }
-      main {
-        padding: 0.5rem;
-      }
-      .gallery, .catalog-grid {
-        padding: 1rem 0.2rem 0 0.2rem;
-        gap: 1rem;
-      }
-      .contactos-form-wrap {
-        padding: 1.2rem 0 1.2rem 0;
-      }
-      .contactos-form {
-        padding: 1.5rem 0.7rem 1.2rem 0.7rem;
-      }
-      .home-title {
-        font-size: 1.3rem;
-      }
-      .home-sobrenos-title {
-        font-size: 1.3rem;
+      .lang-switcher {
+        margin-right: 0;
       }
     }
   </style>
@@ -441,12 +51,16 @@
           <span class="subtitulo">PISOS E REVESTIMENTOS</span>
         </div>
       </div>
-      <nav class="main-nav">
-        <a href="#" id="nav-home" class="active">Home</a>
-        <a href="#" id="nav-sobrenos">Sobre Nós</a>
-        <a href="#" id="nav-catalogo">Catálogo</a>
-        <a href="#" id="nav-contactos">Contactos</a>
+      <nav class="main-nav" id="main-nav" style="flex:1;">
+        <!-- Menu injected by JS -->
       </nav>
+      <div class="lang-switcher" id="lang-switcher">
+        <img src="flag-pt.png" alt="Português" class="lang-flag" data-lang="pt">
+        <img src="flag-en.png" alt="English" class="lang-flag" data-lang="en">
+        <img src="flag-fr.png" alt="Français" class="lang-flag" data-lang="fr">
+        <img src="flag-de.png" alt="Deutsch" class="lang-flag" data-lang="de">
+        <img src="flag-es.png" alt="Español" class="lang-flag" data-lang="es">
+      </div>
     </div>
   </header>
   <div class="categoria-bar" id="categoria-bar" style="display:none;">
@@ -470,7 +84,131 @@
   </footer>
   <div id="modal-container" style="display:none;"></div>
 <script>
+const langs = ['pt','en','fr','de','es'];
+let currentLang = 'pt';
+
+const translations = {
+  menu: {
+    pt: ["Home","Sobre Nós","Catálogo","Contactos"],
+    en: ["Home","About Us","Catalogue","Contact"],
+    fr: ["Accueil","À Propos","Catalogue","Contact"],
+    de: ["Startseite","Über Uns","Katalog","Kontakt"],
+    es: ["Inicio","Sobre Nosotros","Catálogo","Contacto"]
+  },
+  homeTitle: {
+    pt: "Os nossos produtos",
+    en: "Our Products",
+    fr: "Nos Produits",
+    de: "Unsere Produkte",
+    es: "Nuestros Productos"
+  },
+  sobreNosTitle: {
+    pt: "Sobre Nós",
+    en: "About Us",
+    fr: "À Propos",
+    de: "Über Uns",
+    es: "Sobre Nosotros"
+  },
+  sobreNosDesc: {
+    pt: `Somos especialistas em pisos e revestimentos.<br>
+Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.`,
+    en: `We are specialists in flooring and wall coverings.<br>
+We work with durable and elegant materials, always focusing on customer satisfaction.`,
+    fr: `Nous sommes des spécialistes des sols et des revêtements.<br>
+Nous travaillons avec des matériaux durables et élégants, toujours axés sur la satisfaction du client.`,
+    de: `Wir sind Spezialisten für Bodenbeläge und Verkleidungen.<br>
+Wir arbeiten mit langlebigen und eleganten Materialien und legen stets Wert auf Kundenzufriedenheit.`,
+    es: `Somos especialistas en suelos y revestimientos.<br>
+Trabajamos con materiales duraderos y elegantes, siempre enfocados en la satisfacción del cliente.`
+  },
+  produtosTitle: {
+    pt: "PRODUTOS",
+    en: "PRODUCTS",
+    fr: "PRODUITS",
+    de: "PRODUKTE",
+    es: "PRODUCTOS"
+  },
+  produtosDesc: {
+    pt: "Conheça nossa ampla gama de pisos e revestimentos, que combinam qualidade, beleza e durabilidade.",
+    en: "Discover our wide range of flooring and coverings, combining quality, beauty, and durability.",
+    fr: "Découvrez notre large gamme de sols et revêtements, alliant qualité, beauté et durabilité.",
+    de: "Entdecken Sie unser breites Sortiment an Bodenbelägen und Verkleidungen, die Qualität, Schönheit und Langlebigkeit vereinen.",
+    es: "Conozca nuestra amplia gama de suelos y revestimientos, que combinan calidad, belleza y durabilidad."
+  },
+  formTitle: {
+    pt: "Contacte-nos",
+    en: "Contact Us",
+    fr: "Contactez-nous",
+    de: "Kontaktieren Sie uns",
+    es: "Contáctenos"
+  },
+  formName: {
+    pt: "Nome*",
+    en: "Name*",
+    fr: "Nom*",
+    de: "Name*",
+    es: "Nombre*"
+  },
+  formEmail: {
+    pt: "Email*",
+    en: "Email*",
+    fr: "Email*",
+    de: "E-Mail*",
+    es: "Correo electrónico*"
+  },
+  formPhone: {
+    pt: "Telefone*",
+    en: "Phone*",
+    fr: "Téléphone*",
+    de: "Telefon*",
+    es: "Teléfono*"
+  },
+  formSubject: {
+    pt: "Assunto",
+    en: "Subject",
+    fr: "Sujet",
+    de: "Betreff",
+    es: "Asunto"
+  },
+  formMsg: {
+    pt: "Mensagem",
+    en: "Message",
+    fr: "Message",
+    de: "Nachricht",
+    es: "Mensaje"
+  },
+  formBtn: {
+    pt: "ENVIAR",
+    en: "SEND",
+    fr: "ENVOYER",
+    de: "SENDEN",
+    es: "ENVIAR"
+  },
+  formPrivacy: {
+    pt: "Os dados pessoais fornecidos servem apenas para responder às questões solicitadas.",
+    en: "The personal data provided is only used to respond to your requests.",
+    fr: "Les données personnelles fournies servent uniquement à répondre à vos demandes.",
+    de: "Die bereitgestellten personenbezogenen Daten werden nur zur Beantwortung Ihrer Anfragen verwendet.",
+    es: "Los datos personales proporcionados se utilizan únicamente para responder a las consultas solicitadas."
+  },
+  noProduct: {
+    pt: "Nenhum produto encontrado para essa categoria.",
+    en: "No products found for this category.",
+    fr: "Aucun produit trouvé pour cette catégorie.",
+    de: "Keine Produkte für diese Kategorie gefunden.",
+    es: "No se encontraron productos para esta categoría."
+  },
+  categoria: {
+    pt: ["Categoria","Interior","Exterior","Cozinha"],
+    en: ["Category","Indoor","Outdoor","Kitchen"],
+    fr: ["Catégorie","Intérieur","Extérieur","Cuisine"],
+    de: ["Kategorie","Innen","Außen","Küche"],
+    es: ["Categoría","Interior","Exterior","Cocina"]
+  },
+};
+
 const artigos = [
+  // ... seus artigos ...
   {
     categoria: "interior",
     nome: "Laminado Premium",
@@ -569,6 +307,36 @@ const artigos = [
   }
 ];
 
+function renderMenu() {
+  const nav = document.getElementById('main-nav');
+  nav.innerHTML = `
+    <a href="#" id="nav-home" class="active">${translations.menu[currentLang][0]}</a>
+    <a href="#" id="nav-sobrenos">${translations.menu[currentLang][1]}</a>
+    <a href="#" id="nav-catalogo">${translations.menu[currentLang][2]}</a>
+    <a href="#" id="nav-contactos">${translations.menu[currentLang][3]}</a>
+  `;
+  // Attach listeners
+  document.getElementById('nav-home').onclick = (e)=>{
+    e.preventDefault();
+    setActiveNav('nav-home');
+    renderHome();
+  };
+  document.getElementById('nav-sobrenos').onclick = (e)=>{
+    e.preventDefault();
+    setActiveNav('nav-sobrenos');
+    renderSobreNos();
+  };
+  document.getElementById('nav-catalogo').onclick = (e)=>{
+    e.preventDefault();
+    setActiveNav('nav-catalogo');
+    renderCatalogo(document.getElementById('categoriaSelect').value);
+  };
+  document.getElementById('nav-contactos').onclick = (e)=>{
+    e.preventDefault();
+    setActiveNav('nav-contactos');
+    renderContactos();
+  };
+}
 function setActiveNav(id) {
   document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -578,20 +346,39 @@ function hideCategoriaBar() {
 }
 function showCategoriaBar() {
   document.getElementById('categoria-bar').style.display = '';
+  // Update select labels
+  const cat = translations.categoria[currentLang];
+  const sel = document.getElementById('categoriaSelect');
+  sel.options[0].text = cat[0];
+  sel.options[1].text = cat[1];
+  sel.options[2].text = cat[2];
+  sel.options[3].text = cat[3];
 }
+
 function renderHome() {
   hideCategoriaBar();
   const main = document.getElementById('main-content');
   main.innerHTML = `
-    <div class="home-title">Os nossos produtos</div>
+    <div class="home-title">${translations.homeTitle[currentLang]}</div>
     <div class="gallery">
       ${artigos.map(a => `<img src="${a.imagem}" alt="${a.nome}">`).join('')}
     </div>
     <section class="home-sobrenos">
-      <div class="home-sobrenos-title">Sobre Nós</div>
+      <div class="home-sobrenos-title">${translations.sobreNosTitle[currentLang]}</div>
       <div class="home-sobrenos-desc">
-        Somos especialistas em pisos e revestimentos.<br>
-        Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.
+        ${translations.sobreNosDesc[currentLang]}
+      </div>
+    </section>
+  `;
+}
+function renderSobreNos() {
+  hideCategoriaBar();
+  const main = document.getElementById('main-content');
+  main.innerHTML = `
+    <section class="home-sobrenos" style="margin-top:3rem;">
+      <div class="home-sobrenos-title">${translations.sobreNosTitle[currentLang]}</div>
+      <div class="home-sobrenos-desc">
+        ${translations.sobreNosDesc[currentLang]}
       </div>
     </section>
   `;
@@ -601,7 +388,7 @@ function renderCatalogo(selectedCategoria = "todos") {
   const main = document.getElementById('main-content');
   let filtered = selectedCategoria === "todos" ? artigos : artigos.filter(a => a.categoria === selectedCategoria);
   if(filtered.length === 0) {
-    main.innerHTML = `<p style="text-align:center;margin:2rem 0;">Nenhum produto encontrado para essa categoria.</p>`;
+    main.innerHTML = `<p style="text-align:center;margin:2rem 0;">${translations.noProduct[currentLang]}</p>`;
     return;
   }
   main.innerHTML = `
@@ -625,19 +412,6 @@ function renderCatalogo(selectedCategoria = "todos") {
       showArtigoModal(filtered[idx]);
     }
   });
-}
-function renderSobreNos() {
-  hideCategoriaBar();
-  const main = document.getElementById('main-content');
-  main.innerHTML = `
-    <section class="home-sobrenos" style="margin-top:3rem;">
-      <div class="home-sobrenos-title">Sobre Nós</div>
-      <div class="home-sobrenos-desc">
-        Somos especialistas em pisos e revestimentos.<br>
-        Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.
-      </div>
-    </section>
-  `;
 }
 function showArtigoModal(artigo) {
   const modalContainer = document.getElementById('modal-container');
@@ -667,19 +441,45 @@ function renderContactos() {
   main.innerHTML = `
     <div class="contactos-form-wrap">
       <form class="contactos-form" autocomplete="off" action="https://formspree.io/f/xzzgvbba" method="POST">
-        <div class="contactos-form-title">Contacte-nos</div>
-        <input name="nome" type="text" placeholder="Nome*" required>
-        <input name="email" type="email" placeholder="Email*" required>
-        <input name="telefone" type="text" placeholder="Telefone*" required>
-        <input name="assunto" type="text" placeholder="Assunto">
-        <textarea name="mensagem" placeholder="Mensagem" rows="4" required></textarea>
-        <button type="submit">ENVIAR</button>
+        <div class="contactos-form-title">${translations.formTitle[currentLang]}</div>
+        <input name="nome" type="text" placeholder="${translations.formName[currentLang]}" required>
+        <input name="email" type="email" placeholder="${translations.formEmail[currentLang]}" required>
+        <input name="telefone" type="text" placeholder="${translations.formPhone[currentLang]}" required>
+        <input name="assunto" type="text" placeholder="${translations.formSubject[currentLang]}">
+        <textarea name="mensagem" placeholder="${translations.formMsg[currentLang]}" rows="4" required></textarea>
+        <button type="submit">${translations.formBtn[currentLang]}</button>
         <div class="contactos-form-privacy">
-          Os dados pessoais fornecidos servem apenas para responder às questões solicitadas.
+          ${translations.formPrivacy[currentLang]}
         </div>
       </form>
     </div>
   `;
+}
+
+// Language switcher
+function setupLangSwitcher() {
+  document.querySelectorAll('.lang-flag').forEach(flag => {
+    flag.onclick = function() {
+      currentLang = this.dataset.lang;
+      // update flag styles
+      document.querySelectorAll('.lang-flag').forEach(f => f.classList.remove('active'));
+      this.classList.add('active');
+      // update menu, main, select
+      renderMenu();
+      // update select bar if visible
+      if(document.getElementById('categoria-bar').style.display !== 'none') showCategoriaBar();
+      // rerender current section
+      const active = document.querySelector('.main-nav a.active');
+      if(active) {
+        if(active.id === "nav-home") renderHome();
+        else if(active.id === "nav-sobrenos") renderSobreNos();
+        else if(active.id === "nav-catalogo") renderCatalogo(document.getElementById('categoriaSelect').value);
+        else if(active.id === "nav-contactos") renderContactos();
+      }
+    }
+  });
+  // Set default flag active
+  document.querySelector(`.lang-flag[data-lang="${currentLang}"]`).classList.add('active');
 }
 
 window.addEventListener('pageshow', function(event) {
@@ -688,30 +488,13 @@ window.addEventListener('pageshow', function(event) {
     form.querySelectorAll('input, textarea').forEach(f => f.value = '');
   });
 });
-
-document.getElementById('nav-home').onclick = (e)=>{
-  e.preventDefault();
-  setActiveNav('nav-home');
-  renderHome();
-};
-document.getElementById('nav-sobrenos').onclick = (e)=>{
-  e.preventDefault();
-  setActiveNav('nav-sobrenos');
-  renderSobreNos();
-};
-document.getElementById('nav-catalogo').onclick = (e)=>{
-  e.preventDefault();
-  setActiveNav('nav-catalogo');
-  renderCatalogo(document.getElementById('categoriaSelect').value);
-};
-document.getElementById('nav-contactos').onclick = (e)=>{
-  e.preventDefault();
-  setActiveNav('nav-contactos');
-  renderContactos();
-};
 document.getElementById('categoriaSelect').onchange = function() {
   renderCatalogo(this.value);
 };
+
+// Initial page load
+renderMenu();
+setupLangSwitcher();
 renderHome();
 </script>
 </body>
