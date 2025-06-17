@@ -605,13 +605,13 @@ function closeModal() {
   document.getElementById('modal-container').style.display = 'none';
 }
 
-// Contactos form - like image 2
+// Contactos form - envia para Formspree
 function renderContactos() {
   hideCategoriaBar();
   const main = document.getElementById('main-content');
   main.innerHTML = `
     <div class="contactos-form-wrap">
-      <form class="contactos-form" onsubmit="enviarContactos(event)">
+      <form class="contactos-form" action="https://formspree.io/f/mldnlern" method="POST">
         <div class="contactos-form-title">Contacte-nos</div>
         <input name="nome" type="text" placeholder="Nome*" required>
         <input name="email" type="email" placeholder="Email*" required>
@@ -625,12 +625,6 @@ function renderContactos() {
       </form>
     </div>
   `;
-}
-function enviarContactos(e){
-  e.preventDefault();
-  const form = e.target;
-  form.innerHTML = `<div style="text-align:center;padding:3rem 0;font-size:1.15rem;color:green;font-weight:600;">Mensagem enviada com sucesso!</div>`;
-  setTimeout(() => renderContactos(), 2200);
 }
 
 document.getElementById('nav-home').onclick = (e)=>{ e.preventDefault(); setActiveNav('nav-home'); renderHome(); };
