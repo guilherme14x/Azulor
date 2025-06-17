@@ -12,10 +12,12 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      overflow-x: hidden;
     }
     body {
       display: flex;
       flex-direction: column;
+      min-width: 0;
       min-height: 100vh;
       font-family: 'Inter', sans-serif;
       background: #f7f7f7;
@@ -29,6 +31,10 @@
       align-items: center;
       justify-content: space-between;
       height: 110px;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      box-sizing: border-box;
     }
     .branding {
       display: flex;
@@ -91,33 +97,6 @@
       border-bottom: 2px solid #fff;
       font-weight: 700;
     }
-    main {
-      flex: 1 0 auto;
-      width: 100%;
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 2rem 0 0 0;
-      background: #f7f7f7;
-      min-height: 400px;
-      display: flex;
-      flex-direction: column;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-      justify-items: center;
-    }
-    .gallery img {
-      border-radius: 10px;
-      width: 100%;
-      max-width: 300px;
-      height: 200px;
-      object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
-      background: #eee;
-    }
     .categoria-bar {
       background: #fff;
       padding: 2rem 0 0 0;
@@ -126,6 +105,10 @@
       justify-content: flex-start;
       align-items: flex-start;
       min-height: 60px;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      box-sizing: border-box;
     }
     .categoria-select-wrapper {
       margin-left: 5vw;
@@ -145,11 +128,43 @@
       min-width: 200px;
       cursor: pointer;
     }
+    main {
+      flex: 1 0 auto;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 0 0 0;
+      background: #f7f7f7;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      justify-items: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .gallery img {
+      border-radius: 10px;
+      width: 100%;
+      max-width: 300px;
+      height: 200px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+      background: #eee;
+    }
     .catalog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 2rem;
       padding: 2rem;
+      width: 100%;
+      box-sizing: border-box;
     }
     .artigo-card {
       background: white;
@@ -164,6 +179,8 @@
       transition: transform 0.2s;
       min-height: 270px;
       background: #fff;
+      width: 100%;
+      box-sizing: border-box;
     }
     .artigo-card:hover {
       transform: translateY(-5px) scale(1.03);
@@ -173,6 +190,7 @@
       height: 160px;
       object-fit: cover;
       background: #eee;
+      display: block;
     }
     .artigo-card .info {
       padding: 1rem;
@@ -303,6 +321,9 @@
       text-align: center;
       padding: 2rem 0.5rem 1rem 0.5rem;
       width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      box-sizing: border-box;
     }
     footer .footer-inner {
       display: flex;
@@ -319,6 +340,14 @@
       margin: 0;
       font-size: 0.95rem;
       color: #ccc;
+    }
+    @media (max-width: 1300px) {
+      .main-header,
+      .categoria-bar,
+      main,
+      footer {
+        max-width: 100vw;
+      }
     }
     @media (max-width: 700px) {
       .main-header {
@@ -375,6 +404,55 @@
 <script>
 const artigos = [
   {
+    categoria: "interior",
+    nome: "Laminado Premium",
+    preco: "€29,90/m²",
+    imagem: "laminado_premium_3d.png",
+    descricao: "Laminado de alta durabilidade, indicado para salas e quartos.",
+  },
+  {
+    categoria: "interior",
+    nome: "Piso Madeira",
+    preco: "€27,50/m²",
+    imagem: "piso_madeira_3d.png",
+    descricao: "Piso com acabamento de madeira natural, aconchegante e elegante para ambientes internos.",
+  },
+  {
+    categoria: "exterior",
+    nome: "Pedra Natural",
+    preco: "€45,00/m²",
+    imagem: "pedra_natural_3d.png",
+    descricao: "Revestimento em pedra natural para um visual rústico e sofisticado em áreas externas.",
+  },
+  {
+    categoria: "cozinha",
+    nome: "Azulejo Mármore Branco",
+    preco: "€34,80/m²",
+    imagem: "azulejo_marmore_branco_3d.png",
+    descricao: "Azulejo com acabamento em mármore branco, sofisticado e resistente à umidade.",
+  },
+  {
+    categoria: "cozinha",
+    nome: "Azulejo Texturado Bege",
+    preco: "€22,90/m²",
+    imagem: "azulejo_texturado_bege_3d.png",
+    descricao: "Azulejo bege texturado, perfeito para cozinhas modernas e aconchegantes.",
+  },
+  {
+    categoria: "cozinha",
+    nome: "Azulejo Decorativo Azul",
+    preco: "€28,50/m²",
+    imagem: "azulejo_decorativo_azul_3d.png",
+    descricao: "Azulejo decorativo azul, destaque elegante para paredes de cozinhas.",
+  },
+  {
+    categoria: "exterior",
+    nome: "Deck Composto",
+    preco: "€31,00/m²",
+    imagem: "deck_composto_3d.png",
+    descricao: "Deck composto resistente às intempéries, perfeito para jardins e varandas.",
+  },
+  {
     categoria: "exterior",
     nome: "Tijoleira",
     preco: "€19,90/m²",
@@ -401,7 +479,7 @@ const artigos = [
     preco: "€24,90/m²",
     imagem: "painel_vinil_3d.png",
     descricao: "Painel de vinil com textura de madeira, resistente à humidade e fácil de instalar.",
-  }
+  },
 ];
 function setActiveNav(id) {
   document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
@@ -446,7 +524,7 @@ function renderCatalogo(selectedCategoria = "todos") {
   document.querySelectorAll('.artigo-card').forEach(card => {
     card.onclick = function() {
       const idx = this.getAttribute('data-idx');
-      showArtigoModal(artigos[idx]);
+      showArtigoModal(filtered[idx]);
     }
   });
 }
