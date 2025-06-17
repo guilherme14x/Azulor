@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Azulor - Soluções em Pisos e Revestimentos</title>
+  <title>Azulor -  Pisos e Revestimentos</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -111,6 +111,9 @@
       padding-bottom: 2px;
       border-bottom: 2px solid transparent;
       cursor: pointer;
+      background: none;
+      border: none;
+      outline: none;
     }
     .main-nav a.active,
     .main-nav a:hover {
@@ -165,27 +168,20 @@
       flex-direction: column;
       box-sizing: border-box;
     }
-    .home-section {
-      max-width: 900px;
-      margin: 2.5rem auto 2rem auto;
-    }
-    .home-section h2 {
-      font-size: 2rem;
+    .home-title {
+      width: 100%;
+      text-align: center;
+      font-size: 2.2rem;
       font-weight: 800;
-      margin: 0 0 0.3rem 0;
+      letter-spacing: 2px;
       color: #133d61;
-      letter-spacing: 1px;
-    }
-    .home-section p {
-      font-size: 1.15rem;
-      color: #222;
-      margin: 0 0 2.5rem 0;
+      margin: 3rem 0 0.5rem 0;
     }
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 2rem;
-      padding: 2rem;
+      padding: 2rem 2rem 0 2rem;
       justify-items: center;
       width: 100%;
       box-sizing: border-box;
@@ -198,6 +194,26 @@
       object-fit: cover;
       box-shadow: 0 4px 12px rgba(0,0,0,0.13);
       background: #eee;
+    }
+    .home-sobrenos {
+      width: 100%;
+      max-width: 900px;
+      margin: 3.5rem auto 1.5rem auto;
+      text-align: center;
+    }
+    .home-sobrenos-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 0 0 0.3rem 0;
+      color: #133d61;
+      letter-spacing: 1px;
+    }
+    .home-sobrenos-desc {
+      font-size: 1.15rem;
+      color: #222;
+      margin: 0 auto;
+      max-width: 600px;
+      line-height: 1.5;
     }
     .catalog-grid {
       display: grid;
@@ -395,7 +411,7 @@
         padding: 0.5rem;
       }
       .gallery, .catalog-grid {
-        padding: 1rem 0.2rem;
+        padding: 1rem 0.2rem 0 0.2rem;
         gap: 1rem;
       }
       .contactos-form-wrap {
@@ -404,8 +420,11 @@
       .contactos-form {
         padding: 1.5rem 0.7rem 1.2rem 0.7rem;
       }
-      .home-section {
-        padding: 0 1rem;
+      .home-title {
+        font-size: 1.3rem;
+      }
+      .home-sobrenos-title {
+        font-size: 1.3rem;
       }
     }
   </style>
@@ -423,9 +442,10 @@
         </div>
       </div>
       <nav class="main-nav">
-        <a href="#" id="nav-home" class="active">HOME</a>
-        <a href="#" id="nav-catalogo">CATÁLOGO</a>
-        <a href="#" id="nav-contactos">CONTACTO</a>
+        <a href="#" id="nav-home" class="active">Home</a>
+        <a href="#" id="nav-sobrenos">Sobre Nós</a>
+        <a href="#" id="nav-catalogo">Catálogo</a>
+        <a href="#" id="nav-contactos">Contactos</a>
       </nav>
     </div>
   </header>
@@ -451,7 +471,6 @@
   <div id="modal-container" style="display:none;"></div>
 <script>
 const artigos = [
-  // ... seus artigos ...
   {
     categoria: "interior",
     nome: "Laminado Premium",
@@ -564,24 +583,17 @@ function renderHome() {
   hideCategoriaBar();
   const main = document.getElementById('main-content');
   main.innerHTML = `
-    <section class="home-section">
-      <div style="margin-bottom:2.5rem;">
-        <h2>SOBRE NÓS</h2>
-        <p>
-          Somos especialistas em pisos e revestimentos.<br>
-          Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.
-        </p>
-      </div>
-      <div>
-        <h2>PRODUTOS</h2>
-        <p>
-          Conheça nossa ampla gama de pisos e revestimentos, que combinam qualidade, beleza e durabilidade.
-        </p>
-      </div>
-    </section>
+    <div class="home-title">Os nossos produtos</div>
     <div class="gallery">
       ${artigos.map(a => `<img src="${a.imagem}" alt="${a.nome}">`).join('')}
     </div>
+    <section class="home-sobrenos">
+      <div class="home-sobrenos-title">Sobre Nós</div>
+      <div class="home-sobrenos-desc">
+        Somos especialistas em pisos e revestimentos.<br>
+        Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.
+      </div>
+    </section>
   `;
 }
 function renderCatalogo(selectedCategoria = "todos") {
@@ -613,6 +625,19 @@ function renderCatalogo(selectedCategoria = "todos") {
       showArtigoModal(filtered[idx]);
     }
   });
+}
+function renderSobreNos() {
+  hideCategoriaBar();
+  const main = document.getElementById('main-content');
+  main.innerHTML = `
+    <section class="home-sobrenos" style="margin-top:3rem;">
+      <div class="home-sobrenos-title">Sobre Nós</div>
+      <div class="home-sobrenos-desc">
+        Somos especialistas em pisos e revestimentos.<br>
+        Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.
+      </div>
+    </section>
+  `;
 }
 function showArtigoModal(artigo) {
   const modalContainer = document.getElementById('modal-container');
@@ -664,13 +689,26 @@ window.addEventListener('pageshow', function(event) {
   });
 });
 
-document.getElementById('nav-home').onclick = (e)=>{ e.preventDefault(); setActiveNav('nav-home'); renderHome(); };
+document.getElementById('nav-home').onclick = (e)=>{
+  e.preventDefault();
+  setActiveNav('nav-home');
+  renderHome();
+};
+document.getElementById('nav-sobrenos').onclick = (e)=>{
+  e.preventDefault();
+  setActiveNav('nav-sobrenos');
+  renderSobreNos();
+};
 document.getElementById('nav-catalogo').onclick = (e)=>{
   e.preventDefault();
   setActiveNav('nav-catalogo');
   renderCatalogo(document.getElementById('categoriaSelect').value);
 };
-document.getElementById('nav-contactos').onclick = (e)=>{ e.preventDefault(); setActiveNav('nav-contactos'); renderContactos(); };
+document.getElementById('nav-contactos').onclick = (e)=>{
+  e.preventDefault();
+  setActiveNav('nav-contactos');
+  renderContactos();
+};
 document.getElementById('categoriaSelect').onchange = function() {
   renderCatalogo(this.value);
 };
