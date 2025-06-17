@@ -119,7 +119,6 @@
       font-weight: 700;
     }
 
-    /* Categoria bar full-width background & inner centering */
     .categoria-bar {
       background: #fff;
       padding: 2.5rem 0 0 0;
@@ -318,28 +317,6 @@
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-    }
-    .contacts-container {
-      background: white;
-      border-radius: 12px;
-      margin: 2rem auto;
-      max-width: 500px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-      padding: 2.2rem 2rem;
-      text-align: center;
-      font-size: 1.1rem;
-    }
-    .contacts-container h3 {
-      margin-top: 0;
-      font-weight: 700;
-      font-size: 1.25rem;
-    }
-    .contacts-container a {
-      color: #003366;
-      text-decoration: underline;
-    }
-    .contacts-container p {
-      margin-bottom: 0.7rem;
     }
     @media (max-width: 1300px) {
       .main-header-inner,
@@ -583,12 +560,27 @@ function renderContactos() {
   hideCategoriaBar();
   const main = document.getElementById('main-content');
   main.innerHTML = `
-    <div class="contacts-container">
-      <h3>Contacte-nos para um orçamento</h3>
-      <p>Email: <a href="mailto:comercial@azulor.pt">comercial@azulor.pt</a></p>
-      <p>Telefone: +351 912 345 678</p>
-      <p>Morada: Rua do Revestimento, 123, Porto</p>
-      <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">© 2025 Azulor. Todos os direitos reservados.</p>
+    <div style="width:100%;background:#fff;padding:2.5rem 0 2rem 0;box-sizing:border-box;">
+      <h2 style="text-align:center;font-weight:600;letter-spacing:2px;font-size:2.2rem;margin-bottom:2.5rem;">CONTACTOS</h2>
+      <div style="display:flex;justify-content:center;gap:4vw;flex-wrap:wrap;max-width:900px;margin:0 auto;">
+        <div style="display:flex;flex-direction:column;align-items:center;min-width:200px;margin-bottom:1.5rem;">
+          <div style="font-size:1.08rem;text-align:center;line-height:1.5;">
+            Rua do Outeiro, Nº 114<br>
+            4620-402 Nespereira
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;min-width:200px;margin-bottom:1.5rem;">
+          <div>
+            <a href="tel:+351255723139" style="text-decoration:none;color:#e65555;font-weight:600;font-size:1.08rem;">+351 255 723 139</a>
+          </div>
+          <div style="font-size:0.89rem;color:#999;margin-top:0.2rem;">(chamada para a rede fixa nacional)</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;min-width:200px;margin-bottom:1.5rem;">
+          <div>
+            <a href="mailto:geral@nicecastro.com" style="text-decoration:none;color:#003366;font-weight:500;font-size:1.08rem;">geral@nicecastro.com</a>
+          </div>
+        </div>
+      </div>
     </div>
   `;
 }
