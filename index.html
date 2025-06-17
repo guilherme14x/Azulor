@@ -290,34 +290,6 @@
     .btn-main:hover {
       background: #005599;
     }
-    .orcamento-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1rem;
-      width: 100%;
-      align-items: center;
-    }
-    .orcamento-form textarea {
-      width: 92%;
-      min-height: 60px;
-      resize: vertical;
-      padding: 0.7rem;
-      border-radius: 6px;
-      border: 1px solid #aaa;
-      font-size: 1rem;
-      font-family: inherit;
-    }
-    .orcamento-form button {
-      background: #0077cc;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
     @media (max-width: 1300px) {
       .main-header-inner,
       .footer-inner,
@@ -390,6 +362,7 @@ const artigos = [
     preco: "€29,90/m²",
     imagem: "laminado_premium_3d.png",
     descricao: "Laminado de alta durabilidade, indicado para salas e quartos.",
+    medidas: "Medidas: 1,20m x 0,20m x 8mm"
   },
   {
     categoria: "interior",
@@ -397,6 +370,7 @@ const artigos = [
     preco: "€27,50/m²",
     imagem: "piso_madeira_3d.png",
     descricao: "Piso com acabamento de madeira natural, aconchegante e elegante para ambientes internos.",
+    medidas: "Medidas: 1,80m x 0,18m x 12mm"
   },
   {
     categoria: "exterior",
@@ -404,6 +378,7 @@ const artigos = [
     preco: "€45,00/m²",
     imagem: "pedra_natural_3d.png",
     descricao: "Revestimento em pedra natural para um visual rústico e sofisticado em áreas externas.",
+    medidas: "Medidas: 0,60m x 0,40m x 20mm"
   },
   {
     categoria: "cozinha",
@@ -411,6 +386,7 @@ const artigos = [
     preco: "€34,80/m²",
     imagem: "azulejo_marmore_branco_3d.png",
     descricao: "Azulejo com acabamento em mármore branco, sofisticado e resistente à umidade.",
+    medidas: "Medidas: 0,60m x 0,30m x 8mm"
   },
   {
     categoria: "cozinha",
@@ -418,6 +394,7 @@ const artigos = [
     preco: "€22,90/m²",
     imagem: "azulejo_texturado_bege_3d.png",
     descricao: "Azulejo bege texturado, perfeito para cozinhas modernas e aconchegantes.",
+    medidas: "Medidas: 0,25m x 0,40m x 7mm"
   },
   {
     categoria: "cozinha",
@@ -425,6 +402,7 @@ const artigos = [
     preco: "€28,50/m²",
     imagem: "azulejo_decorativo_azul_3d.png",
     descricao: "Azulejo decorativo azul, destaque elegante para paredes de cozinhas.",
+    medidas: "Medidas: 0,20m x 0,20m x 6mm"
   },
   {
     categoria: "exterior",
@@ -432,6 +410,7 @@ const artigos = [
     preco: "€31,00/m²",
     imagem: "deck_composto_3d.png",
     descricao: "Deck composto resistente às intempéries, perfeito para jardins e varandas.",
+    medidas: "Medidas: 2,20m x 0,15m x 22mm"
   },
   {
     categoria: "exterior",
@@ -439,6 +418,7 @@ const artigos = [
     preco: "€19,90/m²",
     imagem: "tijoleira_3d.png",
     descricao: "Tijoleira de alta resistência, ideal para áreas externas e jardins.",
+    medidas: "Medidas: 0,40m x 0,40m x 12mm"
   },
   {
     categoria: "exterior",
@@ -446,6 +426,7 @@ const artigos = [
     preco: "€23,90/m²",
     imagem: "tijoleira_terracota_3d.png",
     descricao: "Tijoleira terracota tradicional, perfeita para áreas externas, varandas e ambientes rústicos.",
+    medidas: "Medidas: 0,30m x 0,30m x 10mm"
   },
   {
     categoria: "cozinha",
@@ -453,6 +434,7 @@ const artigos = [
     preco: "€14,50/m²",
     imagem: "azulejo_branco_3d.png",
     descricao: "Azulejo branco clássico, perfeito para cozinhas modernas e elegantes.",
+    medidas: "Medidas: 0,15m x 0,15m x 5mm"
   },
   {
     categoria: "interior",
@@ -460,6 +442,7 @@ const artigos = [
     preco: "€22,00/m²",
     imagem: "piso_cinza_3d.png",
     descricao: "Piso cinza sofisticado para ambientes internos, fácil de limpar.",
+    medidas: "Medidas: 0,90m x 0,15m x 10mm"
   },
   {
     categoria: "interior",
@@ -467,8 +450,10 @@ const artigos = [
     preco: "€24,90/m²",
     imagem: "painel_vinil_3d.png",
     descricao: "Painel de vinil com textura de madeira, resistente à humidade e fácil de instalar.",
-  },
+    medidas: "Medidas: 1,22m x 0,18m x 5mm"
+  }
 ];
+
 function setActiveNav(id) {
   document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -504,6 +489,8 @@ function renderCatalogo(selectedCategoria = "todos") {
         <div class="info">
           <div class="artigo-nome">${a.nome}</div>
           <div class="artigo-preco">${a.preco}</div>
+          <div style="color:#333; font-size:0.98rem; margin-bottom:0.3rem;">${a.medidas}</div>
+          <div style="color:#555;">${a.descricao}</div>
         </div>
       </div>
       `).join('')}
@@ -525,8 +512,8 @@ function showArtigoModal(artigo) {
         <img src="${artigo.imagem}" alt="${artigo.nome}">
         <div class="artigo-nome" style="font-size:1.3rem;margin-bottom:0.2rem;">${artigo.nome}</div>
         <div class="artigo-preco" style="font-size:1.1rem;">${artigo.preco}</div>
+        <div style="color:#333; font-size:1rem; margin-bottom:0.4rem;">${artigo.medidas}</div>
         <div style="margin:1rem 0 0.7rem 0; color:#333;">${artigo.descricao}</div>
-        <button class="btn-main" onclick="showOrcamentoForm('${artigo.nome}')">Faça o seu Orçamento</button>
       </div>
     </div>
   `;
@@ -537,24 +524,6 @@ function showArtigoModal(artigo) {
 }
 function closeModal() {
   document.getElementById('modal-container').style.display = 'none';
-}
-function showOrcamentoForm(produtoNome) {
-  const modal = document.querySelector('#modal-container .modal');
-  modal.innerHTML = `
-    <button class="close-btn" title="Fechar" onclick="closeModal()">&times;</button>
-    <div style="font-size:1.1rem; font-weight:700; margin-bottom:0.7rem;">Faça o seu Orçamento</div>
-    <div style="font-size:1rem; margin-bottom:0.7rem;">Produto: <span style="font-weight:600">${produtoNome}</span></div>
-    <form class="orcamento-form" onsubmit="enviarOrcamento(event)">
-      <textarea name="mensagem" required placeholder="Escreva suas perguntas ou pedidos..."></textarea>
-      <button type="submit">Enviar pedido</button>
-    </form>
-  `;
-}
-function enviarOrcamento(e) {
-  e.preventDefault();
-  const form = e.target;
-  form.innerHTML = `<div style="text-align:center; color:green; font-weight:600; font-size:1.05rem;">Pedido enviado com sucesso! Entraremos em contato em breve.</div>`;
-  setTimeout(closeModal, 2000);
 }
 function renderContactos() {
   hideCategoriaBar();
