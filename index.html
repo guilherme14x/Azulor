@@ -118,16 +118,22 @@
       border-bottom: 2px solid #fff;
       font-weight: 700;
     }
+
+    /* Categoria bar full-width background & inner centering */
     .categoria-bar {
       background: #fff;
       padding: 2.5rem 0 0 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .categoria-bar-inner {
+      max-width: 1300px;
+      margin: 0 auto;
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: flex-start;
       min-height: 60px;
-      max-width: 1300px;
-      margin: 0 auto;
       width: 100%;
       box-sizing: border-box;
     }
@@ -338,7 +344,7 @@
     @media (max-width: 1300px) {
       .main-header-inner,
       .footer-inner,
-      .categoria-bar,
+      .categoria-bar-inner,
       main {
         max-width: 100vw;
       }
@@ -380,13 +386,15 @@
     </div>
   </header>
   <div class="categoria-bar" id="categoria-bar" style="display:none;">
-    <div class="categoria-select-wrapper">
-      <select class="categoria-select" id="categoriaSelect">
-        <option value="todos">Categoria</option>
-        <option value="interior">Interior</option>
-        <option value="exterior">Exterior</option>
-        <option value="cozinha">Cozinha</option>
-      </select>
+    <div class="categoria-bar-inner">
+      <div class="categoria-select-wrapper">
+        <select class="categoria-select" id="categoriaSelect">
+          <option value="todos">Categoria</option>
+          <option value="interior">Interior</option>
+          <option value="exterior">Exterior</option>
+          <option value="cozinha">Cozinha</option>
+        </select>
+      </div>
     </div>
   </div>
   <main id="main-content"></main>
