@@ -234,6 +234,14 @@
       color: #003366;
       margin-bottom: 0.3rem;
     }
+    .artigo-card .artigo-medidas {
+      color:#333;
+      font-size:0.98rem;
+      margin-bottom:0.3rem;
+    }
+    .artigo-card .artigo-desc {
+      color:#555;
+    }
     .modal-bg {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -275,20 +283,85 @@
       color: #444;
       cursor: pointer;
     }
-    .btn-main {
-      background: #003366;
-      color: white;
-      padding: 0.7rem 1.6rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      margin-top: 1.1rem;
-      font-size: 1rem;
+    .modal .artigo-nome {
+      font-size: 1.3rem;
+      margin-bottom: 0.2rem;
+    }
+    .modal .artigo-preco {
+      font-size: 1.1rem;
+    }
+    .modal .artigo-medidas {
+      color:#333;
+      font-size:1rem;
+      margin-bottom:0.4rem;
+    }
+    .modal .artigo-desc {
+      margin:1rem 0 0.7rem 0;
+      color:#333;
+    }
+
+    /* Contactos form style */
+    .contactos-form-wrap {
+      width:100%;
+      background:#fff;
+      padding:2.5rem 0 2rem 0;
+      box-sizing:border-box;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:80vh;
+    }
+    .contactos-form {
+      background:#fff;
+      border-radius:18px;
+      box-shadow:0 4px 24px rgba(0,0,0,0.07);
+      padding:2.5rem 2rem 2rem 2rem;
+      max-width:400px;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+    }
+    .contactos-form-title {
+      font-size:2rem;
+      font-weight:700;
+      margin-bottom:1.7rem;
+      color:#182024;
+    }
+    .contactos-form input,
+    .contactos-form textarea {
+      margin-bottom:1rem;
+      padding:0.8rem 1rem;
+      border-radius:4px;
+      border:1px solid #d6dbdf;
+      font-size:1.1rem;
+      font-family:inherit;
+    }
+    .contactos-form textarea {
+      margin-bottom:1.2rem;
+      resize:vertical;
+      min-height: 80px;
+    }
+    .contactos-form button {
+      background:#0d253a;
+      color:#fff;
+      font-weight:700;
+      font-size:1rem;
+      padding:0.7rem 0;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+      margin-bottom:1.3rem;
       transition: background 0.2s;
     }
-    .btn-main:hover {
-      background: #005599;
+    .contactos-form button:hover {
+      background:#133d61;
+    }
+    .contactos-form-privacy {
+      font-size:0.97rem;
+      color:#222;
+      text-align:left;
+      opacity:0.85;
     }
     @media (max-width: 1300px) {
       .main-header-inner,
@@ -311,6 +384,12 @@
       .gallery, .catalog-grid {
         padding: 1rem 0.2rem;
         gap: 1rem;
+      }
+      .contactos-form-wrap {
+        padding: 1.2rem 0 1.2rem 0;
+      }
+      .contactos-form {
+        padding: 1.5rem 0.7rem 1.2rem 0.7rem;
       }
     }
   </style>
@@ -489,8 +568,8 @@ function renderCatalogo(selectedCategoria = "todos") {
         <div class="info">
           <div class="artigo-nome">${a.nome}</div>
           <div class="artigo-preco">${a.preco}</div>
-          <div style="color:#333; font-size:0.98rem; margin-bottom:0.3rem;">${a.medidas}</div>
-          <div style="color:#555;">${a.descricao}</div>
+          <div class="artigo-medidas">${a.medidas}</div>
+          <div class="artigo-desc">${a.descricao}</div>
         </div>
       </div>
       `).join('')}
@@ -510,10 +589,10 @@ function showArtigoModal(artigo) {
       <div class="modal" role="dialog" aria-modal="true">
         <button class="close-btn" title="Fechar" onclick="closeModal()">&times;</button>
         <img src="${artigo.imagem}" alt="${artigo.nome}">
-        <div class="artigo-nome" style="font-size:1.3rem;margin-bottom:0.2rem;">${artigo.nome}</div>
-        <div class="artigo-preco" style="font-size:1.1rem;">${artigo.preco}</div>
-        <div style="color:#333; font-size:1rem; margin-bottom:0.4rem;">${artigo.medidas}</div>
-        <div style="margin:1rem 0 0.7rem 0; color:#333;">${artigo.descricao}</div>
+        <div class="artigo-nome">${artigo.nome}</div>
+        <div class="artigo-preco">${artigo.preco}</div>
+        <div class="artigo-medidas">${artigo.medidas}</div>
+        <div class="artigo-desc">${artigo.descricao}</div>
       </div>
     </div>
   `;
@@ -525,34 +604,35 @@ function showArtigoModal(artigo) {
 function closeModal() {
   document.getElementById('modal-container').style.display = 'none';
 }
+
+// Contactos form - like image 2
 function renderContactos() {
   hideCategoriaBar();
   const main = document.getElementById('main-content');
   main.innerHTML = `
-    <div style="width:100%;background:#fff;padding:2.5rem 0 2rem 0;box-sizing:border-box;">
-      <h2 style="text-align:center;font-weight:600;letter-spacing:2px;font-size:2.2rem;margin-bottom:2.5rem;">CONTACTOS</h2>
-      <div style="display:flex;justify-content:center;gap:4vw;flex-wrap:wrap;max-width:900px;margin:0 auto;">
-        <div style="display:flex;flex-direction:column;align-items:center;min-width:200px;margin-bottom:1.5rem;">
-          <div style="font-size:1.08rem;text-align:center;line-height:1.5;">
-            Rua do Outeiro, Nº 114<br>
-            4620-402 Nespereira
-          </div>
+    <div class="contactos-form-wrap">
+      <form class="contactos-form" onsubmit="enviarContactos(event)">
+        <div class="contactos-form-title">Contacte-nos</div>
+        <input name="nome" type="text" placeholder="Nome*" required>
+        <input name="email" type="email" placeholder="Email*" required>
+        <input name="telefone" type="text" placeholder="Telefone*" required>
+        <input name="assunto" type="text" placeholder="Assunto">
+        <textarea name="mensagem" placeholder="" rows="4"></textarea>
+        <button type="submit">ENVIAR</button>
+        <div class="contactos-form-privacy">
+          Os dados pessoais fornecidos servem apenas para responder às questões solicitadas.
         </div>
-        <div style="display:flex;flex-direction:column;align-items:center;min-width:200px;margin-bottom:1.5rem;">
-          <div>
-            <a href="tel:+351255723139" style="text-decoration:none;color:#e65555;font-weight:600;font-size:1.08rem;">+351 255 723 139</a>
-          </div>
-          <div style="font-size:0.89rem;color:#999;margin-top:0.2rem;">(chamada para a rede fixa nacional)</div>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:center;min-width:200px;margin-bottom:1.5rem;">
-          <div>
-            <a href="mailto:geral@nicecastro.com" style="text-decoration:none;color:#003366;font-weight:500;font-size:1.08rem;">geral@nicecastro.com</a>
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
   `;
 }
+function enviarContactos(e){
+  e.preventDefault();
+  const form = e.target;
+  form.innerHTML = `<div style="text-align:center;padding:3rem 0;font-size:1.15rem;color:green;font-weight:600;">Mensagem enviada com sucesso!</div>`;
+  setTimeout(() => renderContactos(), 2200);
+}
+
 document.getElementById('nav-home').onclick = (e)=>{ e.preventDefault(); setActiveNav('nav-home'); renderHome(); };
 document.getElementById('nav-catalogo').onclick = (e)=>{
   e.preventDefault();
