@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Azulor - Flooring and Wall Coverings Solutions</title>
+  <title>Azulor - Soluções em Pisos e Revestimentos</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -37,11 +37,15 @@
       justify-content: space-between;
       height: 110px;
     }
+    .main-header-inner {
+      height: 110px;
+    }
     .footer-inner {
       flex-direction: column;
       align-items: center;
       gap: 1rem;
       padding: 2rem 0.5rem 1rem 0.5rem;
+      height: auto;
       background: none;
     }
     .footer-inner img {
@@ -117,27 +121,40 @@
       border-bottom: 2px solid #fff;
       font-weight: 700;
     }
-    .lang-switcher {
-      display: flex;
-      gap: 0.6rem;
-      align-items: center;
-      margin-left: 2.5rem;
-    }
-    .lang-flag {
-      width: 28px;
-      height: 20px;
-      cursor: pointer;
-      border: 2px solid transparent;
-      border-radius: 4px;
-      transition: border 0.15s, box-shadow 0.15s;
-      background: #eee;
-      object-fit: cover;
+    .categoria-bar {
+      background: #fff;
+      padding: 2.5rem 0 0 0;
+      width: 100%;
       box-sizing: border-box;
-      display: inline-block;
     }
-    .lang-flag.active {
-      border: 2px solid #133d61;
-      box-shadow: 0 2px 8px #133d6120;
+    .categoria-bar-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      min-height: 60px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .categoria-select-wrapper {
+      margin-left: 5vw;
+    }
+    .categoria-select {
+      background: #04243d;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 0.8rem 2.5rem 0.8rem 1rem;
+      font-size: 1.1rem;
+      font-family: inherit;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      outline: none;
+      appearance: none;
+      min-width: 200px;
+      cursor: pointer;
     }
     main {
       flex: 1 0 auto;
@@ -160,129 +177,23 @@
       color: #133d61;
       margin: 3rem 0 0.5rem 0;
     }
-    .catalog-grid {
+    .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 2rem;
-      padding: 2rem;
+      padding: 2rem 2rem 0 2rem;
+      justify-items: center;
       width: 100%;
       box-sizing: border-box;
     }
-    .artigo-card {
-      background: white;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
-      overflow: hidden;
-      border: 4px solid #002244;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-      min-height: 370px;
-      background: #fff;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .artigo-card:hover {
-      transform: translateY(-5px) scale(1.03);
-    }
-    .artigo-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      background: #eee;
-      display: block;
-    }
-    .artigo-card .info {
-      padding: 1.1rem 1rem 1.2rem 1rem;
-      text-align: center;
-      width: 100%;
-      flex: 1 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-    .artigo-nome {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-      color: #133d61;
-    }
-    .artigo-preco {
-      font-size: 1.18rem;
-      font-weight: 700;
-      color: #005199;
-      margin-bottom: 0.25rem;
-    }
-    .artigo-medidas {
-      color:#333;
-      font-size:1.04rem;
-      margin-bottom:0.2rem;
-      font-weight: 500;
-    }
-    .artigo-desc {
-      color:#444;
-      font-size: 1.03rem;
-    }
-    .modal-bg {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal {
-      background: #fff;
-      border-radius: 12px;
-      max-width: 600px;
-      width: 95vw;
-      padding: 2rem 1.5rem 1.5rem 1.5rem;
-      position: relative;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.30);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .modal img {
+    .gallery img {
       border-radius: 10px;
       width: 100%;
-      max-width: 420px;
-      height: 260px;
+      max-width: 300px;
+      height: 200px;
       object-fit: cover;
-      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
       background: #eee;
-    }
-    .modal .close-btn {
-      position: absolute;
-      right: 1.1rem;
-      top: 0.8rem;
-      background: none;
-      border: none;
-      font-size: 1.3rem;
-      color: #444;
-      cursor: pointer;
-    }
-    .modal .artigo-nome {
-      font-size: 1.3rem;
-      margin-bottom: 0.2rem;
-      color: #133d61;
-    }
-    .modal .artigo-preco {
-      font-size: 1.1rem;
-      color: #005199;
-    }
-    .modal .artigo-medidas {
-      color:#333;
-      font-size:1rem;
-      margin-bottom:0.4rem;
-    }
-    .modal .artigo-desc {
-      margin:1rem 0 0.7rem 0;
-      color:#333;
     }
     .home-sobrenos {
       width: 100%;
@@ -304,6 +215,121 @@
       max-width: 600px;
       line-height: 1.5;
     }
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .artigo-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+      overflow: hidden;
+      border: 4px solid #002244;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+      min-height: 270px;
+      background: #fff;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .artigo-card:hover {
+      transform: translateY(-5px) scale(1.03);
+    }
+    .artigo-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      background: #eee;
+      display: block;
+    }
+    .artigo-card .info {
+      padding: 1rem;
+      text-align: center;
+      width: 100%;
+    }
+    .artigo-card .artigo-nome {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .artigo-card .artigo-preco {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #003366;
+      margin-bottom: 0.3rem;
+    }
+    .artigo-card .artigo-medidas {
+      color:#333;
+      font-size:0.98rem;
+      margin-bottom:0.3rem;
+    }
+    .artigo-card .artigo-desc {
+      color:#555;
+    }
+    .modal-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 95vw;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.30);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .modal img {
+      border-radius: 10px;
+      width: 100%;
+      max-width: 320px;
+      height: 190px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      background: #eee;
+    }
+    .modal .close-btn {
+      position: absolute;
+      right: 1.1rem;
+      top: 0.8rem;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: #444;
+      cursor: pointer;
+    }
+    .modal .artigo-nome {
+      font-size: 1.3rem;
+      margin-bottom: 0.2rem;
+    }
+    .modal .artigo-preco {
+      font-size: 1.1rem;
+    }
+    .modal .artigo-medidas {
+      color:#333;
+      font-size:1rem;
+      margin-bottom:0.4rem;
+    }
+    .modal .artigo-desc {
+      margin:1rem 0 0.7rem 0;
+      color:#333;
+    }
     .contactos-form-wrap {
       width:100%;
       background:#fff;
@@ -312,78 +338,66 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      min-height:80px;
+      min-height:80vh;
     }
     .contactos-form {
-      width:100%;
-      display:flex;
-      flex-direction:row;
-      align-items:flex-start;
-      flex-wrap:wrap;
-      gap:0.5rem;
       background:#fff;
       border-radius:18px;
-      box-shadow:none;
-      padding:0;
-      max-width:100%;
-      margin: 0 2rem;
+      box-shadow:0 4px 24px rgba(0,0,0,0.07);
+      padding:2.5rem 2rem 2rem 2rem;
+      max-width:400px;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
     }
     .contactos-form-title {
-      font-size:1.2rem;
+      font-size:2rem;
       font-weight:700;
-      margin-bottom: 0.7rem;
+      margin-bottom:1.7rem;
       color:#182024;
-      flex-basis: 100%;
-      margin-right: 0.5rem;
     }
     .contactos-form input,
     .contactos-form textarea {
-      padding:0.4rem 0.6rem;
+      margin-bottom:1rem;
+      padding:0.8rem 1rem;
       border-radius:4px;
-      border:1px solid #888;
-      font-size:1rem;
+      border:1px solid #d6dbdf;
+      font-size:1.1rem;
       font-family:inherit;
-      margin-bottom:0;
-    }
-    .contactos-form input[type="text"],
-    .contactos-form input[type="email"] {
-      width: 180px;
-      box-sizing: border-box;
     }
     .contactos-form textarea {
-      min-height: 45px;
-      width: 200px;
-      margin-bottom:0;
+      margin-bottom:1.2rem;
       resize:vertical;
+      min-height: 80px;
     }
     .contactos-form button {
       background:#0d253a;
       color:#fff;
       font-weight:700;
       font-size:1rem;
-      padding:0.5rem 1rem;
+      padding:0.7rem 0;
       border:none;
       border-radius:4px;
       cursor:pointer;
-      margin-bottom:0;
-      margin-left: 0.5rem;
+      margin-bottom:1.3rem;
       transition: background 0.2s;
-      height: 38px;
     }
     .contactos-form button:hover {
       background:#133d61;
     }
     .contactos-form-privacy {
-      font-size:0.99rem;
+      font-size:0.97rem;
       color:#222;
       text-align:left;
       opacity:0.85;
-      flex-basis: 100%;
-      margin-top: 0.3rem;
     }
-    @media (max-width: 950px) {
-      .catalog-grid {
-        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    @media (max-width: 1300px) {
+      .main-header-inner,
+      .footer-inner,
+      .categoria-bar-inner,
+      main {
+        max-width: 100vw;
       }
     }
     @media (max-width: 700px) {
@@ -393,31 +407,24 @@
         padding: 1rem !important;
         gap: 1.2rem;
       }
-      .lang-switcher {
-        margin: 1.2rem 0 0 0;
-      }
       main {
         padding: 0.5rem;
       }
-      .catalog-grid {
+      .gallery, .catalog-grid {
         padding: 1rem 0.2rem 0 0.2rem;
         gap: 1rem;
       }
+      .contactos-form-wrap {
+        padding: 1.2rem 0 1.2rem 0;
+      }
       .contactos-form {
-        flex-direction:column;
-        align-items:stretch;
-        padding:0;
+        padding: 1.5rem 0.7rem 1.2rem 0.7rem;
       }
-      .contactos-form input[type="text"],
-      .contactos-form input[type="email"],
-      .contactos-form textarea {
-        width: 100%;
-        margin-bottom: 0.3rem;
+      .home-title {
+        font-size: 1.3rem;
       }
-      .contactos-form button {
-        margin-left: 0;
-        margin-bottom: 0.7rem;
-        width: 100%;
+      .home-sobrenos-title {
+        font-size: 1.3rem;
       }
     }
   </style>
@@ -431,29 +438,34 @@
         </div>
         <div class="branding-title">
           <h1>AZULOR</h1>
-          <span class="subtitulo">FLOORING AND WALL COVERINGS</span>
+          <span class="subtitulo">PISOS E REVESTIMENTOS</span>
         </div>
       </div>
-      <nav class="main-nav" id="main-nav">
+      <nav class="main-nav">
         <a href="#" id="nav-home" class="active">Home</a>
-        <a href="#" id="nav-sobrenos">About Us</a>
-        <a href="#" id="nav-catalogo">Catalogue</a>
-        <a href="#" id="nav-contactos">Contact</a>
+        <a href="#" id="nav-sobrenos">Sobre Nós</a>
+        <a href="#" id="nav-catalogo">Catálogo</a>
+        <a href="#" id="nav-contactos">Contactos</a>
       </nav>
-      <div class="lang-switcher" id="lang-switcher">
-        <img src="flag-pt.png" alt="Portuguese" class="lang-flag" data-lang="pt">
-        <img src="flag-en.png" alt="English" class="lang-flag active" data-lang="en">
-        <img src="flag-fr.png" alt="French" class="lang-flag" data-lang="fr">
-        <img src="flag-de.png" alt="German" class="lang-flag" data-lang="de">
-        <img src="flag-es.png" alt="Spanish" class="lang-flag" data-lang="es">
-      </div>
     </div>
   </header>
+  <div class="categoria-bar" id="categoria-bar" style="display:none;">
+    <div class="categoria-bar-inner">
+      <div class="categoria-select-wrapper">
+        <select class="categoria-select" id="categoriaSelect">
+          <option value="todos">Categoria</option>
+          <option value="interior">Interior</option>
+          <option value="exterior">Exterior</option>
+          <option value="cozinha">Cozinha</option>
+        </select>
+      </div>
+    </div>
+  </div>
   <main id="main-content"></main>
   <footer>
     <div class="footer-inner">
-      <img src="logo_azulor.png" alt="Azulor Logo">
-      <p>© 2025 Azulor. All rights reserved.</p>
+      <img src="logo_azulor.png" alt="Logo Azulor">
+      <p>© 2025 Azulor. Todos os direitos reservados.</p>
     </div>
   </footer>
   <div id="modal-container" style="display:none;"></div>
@@ -461,99 +473,99 @@
 const artigos = [
   {
     categoria: "interior",
-    nome: "Premium Laminate",
-    preco: "€29.90/m²",
+    nome: "Laminado Premium",
+    preco: "€29,90/m²",
     imagem: "laminado_premium_3d.png",
-    descricao: "High durability laminate, suitable for living rooms and bedrooms.",
-    medidas: "Dimensions: 1.20m x 0.20m x 8mm"
+    descricao: "Laminado de alta durabilidade, indicado para salas e quartos.",
+    medidas: "Medidas: 1,20m x 0,20m x 8mm"
   },
   {
     categoria: "interior",
-    nome: "Wood Flooring",
-    preco: "€27.50/m²",
+    nome: "Piso Madeira",
+    preco: "€27,50/m²",
     imagem: "piso_madeira_3d.png",
-    descricao: "Flooring with natural wood finish, cozy and elegant for indoor environments.",
-    medidas: "Dimensions: 1.80m x 0.18m x 12mm"
+    descricao: "Piso com acabamento de madeira natural, aconchegante e elegante para ambientes internos.",
+    medidas: "Medidas: 1,80m x 0,18m x 12mm"
   },
   {
     categoria: "exterior",
-    nome: "Natural Stone",
-    preco: "€45.00/m²",
+    nome: "Pedra Natural",
+    preco: "€45,00/m²",
     imagem: "pedra_natural_3d.png",
-    descricao: "Natural stone cladding for a rustic and sophisticated look in outdoor areas.",
-    medidas: "Dimensions: 0.60m x 0.40m x 20mm"
+    descricao: "Revestimento em pedra natural para um visual rústico e sofisticado em áreas externas.",
+    medidas: "Medidas: 0,60m x 0,40m x 20mm"
   },
   {
-    categoria: "kitchen",
-    nome: "White Marble Tile",
-    preco: "€34.80/m²",
+    categoria: "cozinha",
+    nome: "Azulejo Mármore Branco",
+    preco: "€34,80/m²",
     imagem: "azulejo_marmore_branco_3d.png",
-    descricao: "Tile with a white marble finish, sophisticated and moisture resistant.",
-    medidas: "Dimensions: 0.60m x 0.30m x 8mm"
+    descricao: "Azulejo com acabamento em mármore branco, sofisticado e resistente à umidade.",
+    medidas: "Medidas: 0,60m x 0,30m x 8mm"
   },
   {
-    categoria: "kitchen",
-    nome: "Textured Beige Tile",
-    preco: "€22.90/m²",
+    categoria: "cozinha",
+    nome: "Azulejo Texturado Bege",
+    preco: "€22,90/m²",
     imagem: "azulejo_texturado_bege_3d.png",
-    descricao: "Textured beige tile, perfect for modern and cozy kitchens.",
-    medidas: "Dimensions: 0.25m x 0.40m x 7mm"
+    descricao: "Azulejo bege texturado, perfeito para cozinhas modernas e aconchegantes.",
+    medidas: "Medidas: 0,25m x 0,40m x 7mm"
   },
   {
-    categoria: "kitchen",
-    nome: "Blue Decorative Tile",
-    preco: "€28.50/m²",
+    categoria: "cozinha",
+    nome: "Azulejo Decorativo Azul",
+    preco: "€28,50/m²",
     imagem: "azulejo_decorativo_azul_3d.png",
-    descricao: "Blue decorative tile, an elegant highlight for kitchen walls.",
-    medidas: "Dimensions: 0.20m x 0.20m x 6mm"
+    descricao: "Azulejo decorativo azul, destaque elegante para paredes de cozinhas.",
+    medidas: "Medidas: 0,20m x 0,20m x 6mm"
   },
   {
     categoria: "exterior",
-    nome: "Composite Deck",
-    preco: "€31.00/m²",
+    nome: "Deck Composto",
+    preco: "€31,00/m²",
     imagem: "deck_composto_3d.png",
-    descricao: "Weather-resistant composite deck, perfect for gardens and balconies.",
-    medidas: "Dimensions: 2.20m x 0.15m x 22mm"
+    descricao: "Deck composto resistente às intempéries, perfeito para jardins e varandas.",
+    medidas: "Medidas: 2,20m x 0,15m x 22mm"
   },
   {
     categoria: "exterior",
-    nome: "Tile",
-    preco: "€19.90/m²",
+    nome: "Tijoleira",
+    preco: "€19,90/m²",
     imagem: "tijoleira_3d.png",
-    descricao: "High-resistance tile, ideal for outdoor areas and gardens.",
-    medidas: "Dimensions: 0.40m x 0.40m x 12mm"
+    descricao: "Tijoleira de alta resistência, ideal para áreas externas e jardins.",
+    medidas: "Medidas: 0,40m x 0,40m x 12mm"
   },
   {
     categoria: "exterior",
-    nome: "Terra Cotta Tile",
-    preco: "€23.90/m²",
+    nome: "Tijoleira Terracota",
+    preco: "€23,90/m²",
     imagem: "tijoleira_terracota_3d.png",
-    descricao: "Traditional terra cotta tile, perfect for outdoor areas, balconies, and rustic settings.",
-    medidas: "Dimensions: 0.30m x 0.30m x 10mm"
+    descricao: "Tijoleira terracota tradicional, perfeita para áreas externas, varandas e ambientes rústicos.",
+    medidas: "Medidas: 0,30m x 0,30m x 10mm"
   },
   {
-    categoria: "kitchen",
-    nome: "White Tile",
-    preco: "€14.50/m²",
+    categoria: "cozinha",
+    nome: "Azulejo Branco",
+    preco: "€14,50/m²",
     imagem: "azulejo_branco_3d.png",
-    descricao: "Classic white tile, perfect for modern and elegant kitchens.",
-    medidas: "Dimensions: 0.15m x 0.15m x 5mm"
+    descricao: "Azulejo branco clássico, perfeito para cozinhas modernas e elegantes.",
+    medidas: "Medidas: 0,15m x 0,15m x 5mm"
   },
   {
     categoria: "interior",
-    nome: "Grey Flooring",
-    preco: "€22.00/m²",
+    nome: "Piso Cinza",
+    preco: "€22,00/m²",
     imagem: "piso_cinza_3d.png",
-    descricao: "Sophisticated grey flooring for indoor environments, easy to clean.",
-    medidas: "Dimensions: 0.90m x 0.15m x 10mm"
+    descricao: "Piso cinza sofisticado para ambientes internos, fácil de limpar.",
+    medidas: "Medidas: 0,90m x 0,15m x 10mm"
   },
   {
     categoria: "interior",
-    nome: "Vinyl Panel",
-    preco: "€24.90/m²",
+    nome: "Painel Vinil",
+    preco: "€24,90/m²",
     imagem: "painel_vinil_3d.png",
-    descricao: "Vinyl panel with wood texture, moisture resistant and easy to install.",
-    medidas: "Dimensions: 1.22m x 0.18m x 5mm"
+    descricao: "Painel de vinil com textura de madeira, resistente à humidade e fácil de instalar.",
+    medidas: "Medidas: 1,22m x 0,18m x 5mm"
   }
 ];
 
@@ -561,16 +573,41 @@ function setActiveNav(id) {
   document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
-function renderMenu() {
-  // Menu is static in this version, so nothing needed here
+function hideCategoriaBar() {
+  document.getElementById('categoria-bar').style.display = 'none';
+}
+function showCategoriaBar() {
+  document.getElementById('categoria-bar').style.display = '';
 }
 function renderHome() {
+  hideCategoriaBar();
   const main = document.getElementById('main-content');
   main.innerHTML = `
-    <div class="home-title">Our Products</div>
+    <div class="home-title">Os nossos produtos</div>
+    <div class="gallery">
+      ${artigos.map(a => `<img src="${a.imagem}" alt="${a.nome}">`).join('')}
+    </div>
+    <section class="home-sobrenos">
+      <div class="home-sobrenos-title">Sobre Nós</div>
+      <div class="home-sobrenos-desc">
+        Somos especialistas em pisos e revestimentos.<br>
+        Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.
+      </div>
+    </section>
+  `;
+}
+function renderCatalogo(selectedCategoria = "todos") {
+  showCategoriaBar();
+  const main = document.getElementById('main-content');
+  let filtered = selectedCategoria === "todos" ? artigos : artigos.filter(a => a.categoria === selectedCategoria);
+  if(filtered.length === 0) {
+    main.innerHTML = `<p style="text-align:center;margin:2rem 0;">Nenhum produto encontrado para essa categoria.</p>`;
+    return;
+  }
+  main.innerHTML = `
     <div class="catalog-grid">
-      ${artigos.map(a => `
-      <div class="artigo-card" tabindex="0">
+      ${filtered.map((a,i) => `
+      <div class="artigo-card" data-idx="${i}" tabindex="0">
         <img src="${a.imagem}" alt="${a.nome}">
         <div class="info">
           <div class="artigo-nome">${a.nome}</div>
@@ -581,61 +618,33 @@ function renderHome() {
       </div>
       `).join('')}
     </div>
-    <section class="home-sobrenos">
-      <div class="home-sobrenos-title">About Us</div>
-      <div class="home-sobrenos-desc">
-        We are specialists in flooring and wall coverings.<br>
-        We work with durable and elegant materials, always focusing on customer satisfaction.
-      </div>
-    </section>
   `;
-  document.querySelectorAll('.artigo-card').forEach((card, idx) => {
+  document.querySelectorAll('.artigo-card').forEach(card => {
     card.onclick = function() {
-      showArtigoModal(artigos[idx]);
+      const idx = this.getAttribute('data-idx');
+      showArtigoModal(filtered[idx]);
     }
   });
 }
 function renderSobreNos() {
+  hideCategoriaBar();
   const main = document.getElementById('main-content');
   main.innerHTML = `
     <section class="home-sobrenos" style="margin-top:3rem;">
-      <div class="home-sobrenos-title">About Us</div>
+      <div class="home-sobrenos-title">Sobre Nós</div>
       <div class="home-sobrenos-desc">
-        We are specialists in flooring and wall coverings.<br>
-        We work with durable and elegant materials, always focusing on customer satisfaction.
+        Somos especialistas em pisos e revestimentos.<br>
+        Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.
       </div>
     </section>
   `;
-}
-function renderCatalogo() {
-  const main = document.getElementById('main-content');
-  main.innerHTML = `
-    <div class="catalog-grid">
-      ${artigos.map((a, i) => `
-      <div class="artigo-card" tabindex="0">
-        <img src="${a.imagem}" alt="${a.nome}">
-        <div class="info">
-          <div class="artigo-nome">${a.nome}</div>
-          <div class="artigo-preco">${a.preco}</div>
-          <div class="artigo-medidas">${a.medidas}</div>
-          <div class="artigo-desc">${a.descricao}</div>
-        </div>
-      </div>
-      `).join('')}
-    </div>
-  `;
-  document.querySelectorAll('.artigo-card').forEach((card, idx) => {
-    card.onclick = function() {
-      showArtigoModal(artigos[idx]);
-    }
-  });
 }
 function showArtigoModal(artigo) {
   const modalContainer = document.getElementById('modal-container');
   modalContainer.innerHTML = `
     <div class="modal-bg" tabindex="-1">
       <div class="modal" role="dialog" aria-modal="true">
-        <button class="close-btn" title="Close" onclick="closeModal()">&times;</button>
+        <button class="close-btn" title="Fechar" onclick="closeModal()">&times;</button>
         <img src="${artigo.imagem}" alt="${artigo.nome}">
         <div class="artigo-nome">${artigo.nome}</div>
         <div class="artigo-preco">${artigo.preco}</div>
@@ -653,26 +662,33 @@ function closeModal() {
   document.getElementById('modal-container').style.display = 'none';
 }
 function renderContactos() {
+  hideCategoriaBar();
   const main = document.getElementById('main-content');
   main.innerHTML = `
     <div class="contactos-form-wrap">
       <form class="contactos-form" autocomplete="off" action="https://formspree.io/f/xzzgvbba" method="POST">
-        <div class="contactos-form-title">Contact us</div>
-        <input name="nome" type="text" placeholder="Name*" required>
+        <div class="contactos-form-title">Contacte-nos</div>
+        <input name="nome" type="text" placeholder="Nome*" required>
         <input name="email" type="email" placeholder="Email*" required>
-        <input name="telefone" type="text" placeholder="Phone*" required>
-        <input name="assunto" type="text" placeholder="Subject">
-        <textarea name="mensagem" placeholder="Message" rows="4" required></textarea>
-        <button type="submit">SEND</button>
+        <input name="telefone" type="text" placeholder="Telefone*" required>
+        <input name="assunto" type="text" placeholder="Assunto">
+        <textarea name="mensagem" placeholder="Mensagem" rows="4" required></textarea>
+        <button type="submit">ENVIAR</button>
         <div class="contactos-form-privacy">
-          The personal data provided is only used to respond to your requests.
+          Os dados pessoais fornecidos servem apenas para responder às questões solicitadas.
         </div>
       </form>
     </div>
   `;
 }
 
-// Static menu, so just assign event handlers here
+window.addEventListener('pageshow', function(event) {
+  document.querySelectorAll('form').forEach(form => {
+    form.reset();
+    form.querySelectorAll('input, textarea').forEach(f => f.value = '');
+  });
+});
+
 document.getElementById('nav-home').onclick = (e)=>{
   e.preventDefault();
   setActiveNav('nav-home');
@@ -686,19 +702,16 @@ document.getElementById('nav-sobrenos').onclick = (e)=>{
 document.getElementById('nav-catalogo').onclick = (e)=>{
   e.preventDefault();
   setActiveNav('nav-catalogo');
-  renderCatalogo();
+  renderCatalogo(document.getElementById('categoriaSelect').value);
 };
 document.getElementById('nav-contactos').onclick = (e)=>{
   e.preventDefault();
   setActiveNav('nav-contactos');
   renderContactos();
 };
-// Language switcher (only highlights the English flag)
-document.querySelectorAll('.lang-flag').forEach(flag => {
-  flag.classList.remove('active');
-  if(flag.dataset.lang === 'en') flag.classList.add('active');
-});
-
+document.getElementById('categoriaSelect').onchange = function() {
+  renderCatalogo(this.value);
+};
 renderHome();
 </script>
 </body>
