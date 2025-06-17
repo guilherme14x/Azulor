@@ -118,7 +118,6 @@
       border-bottom: 2px solid #fff;
       font-weight: 700;
     }
-
     .categoria-bar {
       background: #fff;
       padding: 2.5rem 0 0 0;
@@ -299,7 +298,6 @@
       margin:1rem 0 0.7rem 0;
       color:#333;
     }
-
     /* Contactos form style */
     .contactos-form-wrap {
       width:100%;
@@ -605,13 +603,13 @@ function closeModal() {
   document.getElementById('modal-container').style.display = 'none';
 }
 
-// Contactos form - envia para Formspree (xzzgvbba)
+// Contactos form - envia para Formspree (xzzgvbba) e sempre limpo ao voltar
 function renderContactos() {
   hideCategoriaBar();
   const main = document.getElementById('main-content');
   main.innerHTML = `
     <div class="contactos-form-wrap">
-      <form class="contactos-form" action="https://formspree.io/f/xzzgvbba" method="POST">
+      <form class="contactos-form" autocomplete="off" action="https://formspree.io/f/xzzgvbba" method="POST">
         <div class="contactos-form-title">Contacte-nos</div>
         <input name="nome" type="text" placeholder="Nome*" required>
         <input name="email" type="email" placeholder="Email*" required>
@@ -626,6 +624,11 @@ function renderContactos() {
     </div>
   `;
 }
+// Força limpar inputs ao voltar à página (ex: após back do obrigado do Formspree)
+window.addEventListener('pageshow', function(event) {
+  // Se houver form na tela, reseta
+  document.querySelectorAll('form').forEach(form => form.reset());
+});
 
 document.getElementById('nav-home').onclick = (e)=>{ e.preventDefault(); setActiveNav('nav-home'); renderHome(); };
 document.getElementById('nav-catalogo').onclick = (e)=>{
