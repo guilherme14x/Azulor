@@ -475,11 +475,11 @@
         <a href="#" id="nav-contactos">Contactos</a>
       </nav>
       <div class="header-flags">
-        <img src="flag_pt.png" alt="Português" title="Português" id="flag-pt">
-        <img src="flag_gb.png" alt="English" title="English" id="flag-gb">
-        <img src="flag_fr.png" alt="Français" title="Français" id="flag-fr">
-        <img src="flag_de.png" alt="Deutsch" title="Deutsch" id="flag-de">
-        <img src="flag_es.png" alt="Español" title="Español" id="flag-es">
+        <img src="flag_pt.png" alt="Português" title="Português">
+        <img src="flag_gb.png" alt="English" title="English">
+        <img src="flag_fr.png" alt="Français" title="Français">
+        <img src="flag_de.png" alt="Deutsch" title="Deutsch">
+        <img src="flag_es.png" alt="Español" title="Español">
       </div>
     </div>
   </header>
@@ -504,168 +504,6 @@
   </footer>
   <div id="modal-container" style="display:none;"></div>
 <script>
-// --- ADDED: Language Switch for ENGLISH, without removing anything from your code ---
-
-// English translations
-const translationsEN = {
-  "Home": "Home",
-  "Sobre Nós": "About Us",
-  "Catálogo": "Catalog",
-  "Contactos": "Contact",
-  "PISOS E REVESTIMENTOS": "FLOORS AND COVERINGS",
-  "Categoria": "Category",
-  "Interior": "Indoor",
-  "Exterior": "Outdoor",
-  "Cozinha": "Kitchen",
-  "Os nossos produtos": "Our Products",
-  "Sobre Nós": "About Us",
-  "Somos especialistas em pisos e revestimentos.<br>Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente.": "We are specialists in floors and coverings.<br>We work with durable and elegant materials, always focusing on customer satisfaction.",
-  "Nenhum produto encontrado para essa categoria.": "No products found for this category.",
-  "Contacte-nos": "Contact Us",
-  "Nome*": "Name*",
-  "Email*": "Email*",
-  "Telefone*": "Phone*",
-  "Assunto": "Subject",
-  "Mensagem": "Message",
-  "ENVIAR": "SEND",
-  "Os dados pessoais fornecidos servem apenas para responder às questões solicitadas.": "The personal data provided is used only to respond to your inquiries.",
-  "© 2025 Azulor. Todos os direitos reservados.": "© 2025 Azulor. All rights reserved.",
-  "Fechar": "Close"
-};
-
-function translateToEN() {
-  // Top Nav
-  document.getElementById('nav-home').textContent = translationsEN["Home"];
-  document.getElementById('nav-sobrenos').textContent = translationsEN["Sobre Nós"];
-  document.getElementById('nav-catalogo').textContent = translationsEN["Catálogo"];
-  document.getElementById('nav-contactos').textContent = translationsEN["Contactos"];
-  // Branding Subtitle
-  document.querySelector('.branding-title .subtitulo').textContent = translationsEN["PISOS E REVESTIMENTOS"];
-  // Categoria Select
-  let cs = document.getElementById('categoriaSelect');
-  if (cs) {
-    if (cs.options[0]) cs.options[0].text = translationsEN["Categoria"];
-    if (cs.options[1]) cs.options[1].text = translationsEN["Interior"];
-    if (cs.options[2]) cs.options[2].text = translationsEN["Exterior"];
-    if (cs.options[3]) cs.options[3].text = translationsEN["Cozinha"];
-  }
-  // Footer
-  document.querySelector('.footer-inner p').textContent = translationsEN["© 2025 Azulor. Todos os direitos reservados."];
-
-  // Some UI (modal, etc) are rendered dynamically, so we re-render if needed:
-  if (document.getElementById('nav-home').classList.contains('active')) {
-    renderHome_EN();
-  } else if (document.getElementById('nav-sobrenos').classList.contains('active')) {
-    renderSobreNos_EN();
-  } else if (document.getElementById('nav-catalogo').classList.contains('active')) {
-    renderCatalogo_EN(document.getElementById('categoriaSelect').value);
-  } else if (document.getElementById('nav-contactos').classList.contains('active')) {
-    renderContactos_EN();
-  }
-}
-
-// --- ADDED ENGLISH RENDER FUNCTIONS, original render functions untouched ---
-
-function renderHome_EN() {
-  hideCategoriaBar();
-  const main = document.getElementById('main-content');
-  main.innerHTML = `
-    <div class="home-title">${translationsEN["Os nossos produtos"]}</div>
-    <div class="gallery">
-      ${artigos.map(a => `<img src="${a.imagem}" alt="${a.nome}">`).join('')}
-    </div>
-    <section class="home-sobrenos">
-      <div class="home-sobrenos-title">${translationsEN["Sobre Nós"]}</div>
-      <div class="home-sobrenos-desc">
-        ${translationsEN["Somos especialistas em pisos e revestimentos.<br>Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente."]}
-      </div>
-    </section>
-  `;
-}
-function renderCatalogo_EN(selectedCategoria = "todos") {
-  showCategoriaBar();
-  const main = document.getElementById('main-content');
-  let filtered = selectedCategoria === "todos" ? artigos : artigos.filter(a => a.categoria === selectedCategoria);
-  if(filtered.length === 0) {
-    main.innerHTML = `<p style="text-align:center;margin:2rem 0;">${translationsEN["Nenhum produto encontrado para essa categoria."]}</p>`;
-    return;
-  }
-  main.innerHTML = `
-    <div class="catalog-grid">
-      ${filtered.map((a,i) => `
-      <div class="artigo-card" data-idx="${i}" tabindex="0">
-        <img src="${a.imagem}" alt="${a.nome}">
-        <div class="info">
-          <div class="artigo-nome">${a.nome}</div>
-          <div class="artigo-preco">${a.preco}</div>
-          <div class="artigo-medidas">${a.medidas}</div>
-          <div class="artigo-desc">${a.descricao}</div>
-        </div>
-      </div>
-      `).join('')}
-    </div>
-  `;
-  document.querySelectorAll('.artigo-card').forEach(card => {
-    card.onclick = function() {
-      const idx = this.getAttribute('data-idx');
-      showArtigoModal_EN(filtered[idx]);
-    }
-  });
-}
-function renderSobreNos_EN() {
-  hideCategoriaBar();
-  const main = document.getElementById('main-content');
-  main.innerHTML = `
-    <section class="home-sobrenos" style="margin-top:3rem;">
-      <div class="home-sobrenos-title">${translationsEN["Sobre Nós"]}</div>
-      <div class="home-sobrenos-desc">
-        ${translationsEN["Somos especialistas em pisos e revestimentos.<br>Trabalhamos com materiais duráveis e elegantes, sempre com foco na satisfação do cliente."]}
-      </div>
-    </section>
-  `;
-}
-function showArtigoModal_EN(artigo) {
-  const modalContainer = document.getElementById('modal-container');
-  modalContainer.innerHTML = `
-    <div class="modal-bg" tabindex="-1">
-      <div class="modal" role="dialog" aria-modal="true">
-        <button class="close-btn" title="${translationsEN["Fechar"]}" onclick="closeModal()">&times;</button>
-        <img src="${artigo.imagem}" alt="${artigo.nome}">
-        <div class="artigo-nome">${artigo.nome}</div>
-        <div class="artigo-preco">${artigo.preco}</div>
-        <div class="artigo-medidas">${artigo.medidas}</div>
-        <div class="artigo-desc">${artigo.descricao}</div>
-      </div>
-    </div>
-  `;
-  modalContainer.style.display = '';
-  modalContainer.querySelector('.modal-bg').onclick = function(e) {
-    if(e.target === this) closeModal();
-  }
-}
-function renderContactos_EN() {
-  hideCategoriaBar();
-  const main = document.getElementById('main-content');
-  main.innerHTML = `
-    <div class="contactos-form-wrap">
-      <form class="contactos-form" autocomplete="off" action="https://formspree.io/f/xzzgvbba" method="POST">
-        <div class="contactos-form-title">${translationsEN["Contacte-nos"]}</div>
-        <input name="nome" type="text" placeholder="${translationsEN["Nome*"]}" required>
-        <input name="email" type="email" placeholder="${translationsEN["Email*"]}" required>
-        <input name="telefone" type="text" placeholder="${translationsEN["Telefone*"]}" required>
-        <input name="assunto" type="text" placeholder="${translationsEN["Assunto"]}">
-        <textarea name="mensagem" placeholder="${translationsEN["Mensagem"]}" rows="4" required></textarea>
-        <button type="submit">${translationsEN["ENVIAR"]}</button>
-        <div class="contactos-form-privacy">
-          ${translationsEN["Os dados pessoais fornecidos servem apenas para responder às questões solicitadas."]}
-        </div>
-      </form>
-    </div>
-  `;
-}
-
-// --- End ENGLISH additions ---
-
 const artigos = [
   {
     categoria: "interior",
@@ -888,60 +726,26 @@ window.addEventListener('pageshow', function(event) {
 document.getElementById('nav-home').onclick = (e)=>{
   e.preventDefault();
   setActiveNav('nav-home');
-  if (window.currentLang === "en") renderHome_EN();
-  else renderHome();
+  renderHome();
 };
 document.getElementById('nav-sobrenos').onclick = (e)=>{
   e.preventDefault();
   setActiveNav('nav-sobrenos');
-  if (window.currentLang === "en") renderSobreNos_EN();
-  else renderSobreNos();
+  renderSobreNos();
 };
 document.getElementById('nav-catalogo').onclick = (e)=>{
   e.preventDefault();
   setActiveNav('nav-catalogo');
-  if (window.currentLang === "en") renderCatalogo_EN(document.getElementById('categoriaSelect').value);
-  else renderCatalogo(document.getElementById('categoriaSelect').value);
+  renderCatalogo(document.getElementById('categoriaSelect').value);
 };
 document.getElementById('nav-contactos').onclick = (e)=>{
   e.preventDefault();
   setActiveNav('nav-contactos');
-  if (window.currentLang === "en") renderContactos_EN();
-  else renderContactos();
+  renderContactos();
 };
 document.getElementById('categoriaSelect').onchange = function() {
-  if (window.currentLang === "en") renderCatalogo_EN(this.value);
-  else renderCatalogo(this.value);
+  renderCatalogo(this.value);
 };
-
-// Language switch handlers
-window.currentLang = "pt";
-document.getElementById('flag-pt').onclick = function() {
-  window.currentLang = "pt";
-  // Reset UI to Portuguese by re-calling original render functions and resetting static UI
-  document.getElementById('nav-home').textContent = "Home";
-  document.getElementById('nav-sobrenos').textContent = "Sobre Nós";
-  document.getElementById('nav-catalogo').textContent = "Catálogo";
-  document.getElementById('nav-contactos').textContent = "Contactos";
-  document.querySelector('.branding-title .subtitulo').textContent = "PISOS E REVESTIMENTOS";
-  let cs = document.getElementById('categoriaSelect');
-  if (cs) {
-    if (cs.options[0]) cs.options[0].text = "Categoria";
-    if (cs.options[1]) cs.options[1].text = "Interior";
-    if (cs.options[2]) cs.options[2].text = "Exterior";
-    if (cs.options[3]) cs.options[3].text = "Cozinha";
-  }
-  document.querySelector('.footer-inner p').textContent = "© 2025 Azulor. Todos os direitos reservados.";
-  if (document.getElementById('nav-home').classList.contains('active')) renderHome();
-  else if (document.getElementById('nav-sobrenos').classList.contains('active')) renderSobreNos();
-  else if (document.getElementById('nav-catalogo').classList.contains('active')) renderCatalogo(document.getElementById('categoriaSelect').value);
-  else if (document.getElementById('nav-contactos').classList.contains('active')) renderContactos();
-};
-document.getElementById('flag-gb').onclick = function() {
-  window.currentLang = "en";
-  translateToEN();
-};
-
 renderHome();
 </script>
 </body>
